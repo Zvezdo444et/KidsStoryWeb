@@ -1070,3 +1070,167 @@ body {
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
+
+.address-highlight--blue {
+  color: #0E95D3;
+}
+
+.phone-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.social-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .hero-input {
+  flex: 1;
+  padding-right: 28px;
+}
+
+.required-star {
+  position: absolute;
+  right: 10px;
+  color: #EA5D4A;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.checkbox-dot--toggle {
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, border 0.2s;
+}
+
+.checkbox-dot--white-empty {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.checkbox-dot--white-empty.checkbox-dot--checked {
+  background: #EA5D4A;
+  border-color: #EA5D4A;
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+}
+
+.checkbox-dot--dark-empty {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #334155;
+}
+
+.checkbox-dot--dark-empty.checkbox-dot--checked {
+  background: #EA5D4A;
+  border-color: #EA5D4A;
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+}
+
+.questions-checkbox {
+  cursor: pointer;
+}
+
+.hero-checkbox {
+  cursor: pointer;
+}
+
+.questions-right {
+  position: relative;
+  width: 400px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.questions-img {
+  width: 320px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+.questions-shapes {
+  position: absolute;
+  width: 380px;
+  top: -30px;
+  right: -30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.review-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.review-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-icon {
+  width: 96px;
+  height: 96px;
+}
+
+.feature-icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.service-icon img {
+  width: 56px;
+  height: 56px;
+}
+
+.advantages-inner {
+  position: relative;
+  overflow: visible;
+}
+
+.haip-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.advantages-inner .section-title,
+.advantages-inner .section-desc,
+.adv-grid {
+  position: relative;
+  z-index: 1;
+}
