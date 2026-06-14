@@ -1,461 +1,594 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kids Story</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Story</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+  <body>
 
-  <header class="header">
-    <div class="header-top">
-      <div class="logo">
-        <img src="images/logo.png" alt="Kids Story">
-      </div>
-      <nav class="menu">
-        <a href="#" class="menu-link has-arrow">О нас<span class="arrow-line"></span></a>
-        <a href="#" class="menu-link has-arrow">Расписание <span class="arrow-line"></span></a>
-        <a href="#" class="menu-link has-arrow">Программа <span class="arrow-line"></span></a>
-        <a href="#" class="menu-link">Фото и видео</a>
-        <a href="#" class="menu-link">Команда</a>
-        <a href="#" class="menu-link">Контакты</a>
-      </nav>
-      <div class="header-right">
-        <div class="header-addresses">
-          <span class="address">Москва, ул. Муравская д.38, к.1</span>
-          <span class="address">ЖК Мир Митино <span class="address-highlight address-highlight--blue">М. Пятницкое шоссе</span></span>
+    <header class="header">
+      <div class="header-top">
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.png" alt="Kids Story"></a>
         </div>
-        <div class="header-contacts">
-          <div class="phone-block">
-            <img src="images/phone-icon.png" alt="" class="phone-icon-img">
-            <span class="phone">+7 495 123 34 25</span>
+        <button class="burger" onclick="toggleMenu()"
+          aria-label="Меню">&#9776;</button>
+        <nav class="menu" id="mainMenu">
+          <div class="menu-item">
+            <a href="#" class="menu-link">О нас<span class="arrow-line"></span></a>
+            <div class="dropdown">
+              <a href="#" class="dropdown-link">О центре</a>
+            </div>
           </div>
-          <div class="social-icons">
+          <div class="menu-item">
+            <a href="#" class="menu-link">Расписание<span class="arrow-line"></span></a>
+            <div class="dropdown">
+              <a href="#" class="dropdown-link">Расписание основное</a>
+              <a href="services.html" class="dropdown-link">Дополнительные услуги</a>
+            </div>
+          </div>
+          <div class="menu-item">
+            <a href="#" class="menu-link">Программа<span class="arrow-line"></span></a>
+            <div class="dropdown">
+              <a href="#" class="dropdown-link">Группа (2-3 года)</a>
+              <a href="#" class="dropdown-link">Группа (3-5 лет)</a>
+              <a href="#" class="dropdown-link">Группа (5-7 лет)</a>
+            </div>
+          </div>
+          <a href="#" class="menu-link">Фото и видео</a>
+          <a href="#" class="menu-link">Команда</a>
+          <a href="#" class="menu-link">Контакты</a>
+        </nav>
+        <div class="header-right">
+          <div class="header-addresses">
+            <span class="address">Москва, ул. Муравская д.38, к.1</span>
+            <span class="address">ЖК Мир Митино <span
+                class="address-highlight address-highlight--blue">М. Пятницкое
+                шоссе</span></span>
+          </div>
+          <div class="header-contacts">
+            <div class="phone-block">
+              <img src="images/phone-icon.png" alt class="phone-icon-img">
+              <span class="phone">+7 495 123 34 25</span>
+            </div>
+            <div class="social-icons">
+              <a href="#" class="social-link">
+                <img src="images/tg-icon.png" alt="Telegram"
+                  class="social-icon-img">
+              </a>
+              <a href="#" class="social-link">
+                <img src="images/vk-icon.png" alt="VK" class="social-icon-img">
+              </a>
+            </div>
+            <a href="#" class="btn-signup">Записаться на экскурсию</a>
+          </div>
+          <div class="callback">
+            <a href="#" class="callback-link">Заказать быстрый звонок</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="subheader">
+      <nav class="submenu">
+        <a href="#" class="submenu-link">О центре</a>
+        <a href="#" class="submenu-link">Документы</a>
+        <a href="#" class="submenu-link">Родителям</a>
+        <a href="#" class="submenu-link">Питание</a>
+        <a href="#" class="submenu-link">Новости</a>
+        <a href="#" class="submenu-link">3D тур</a>
+        <a href="#" class="submenu-link">Отзывы</a>
+      </nav>
+    </div>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero-bg">
+          <img src="images/hero-bg.png" alt class="hero-bg-img">
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">Kidsstory</h1>
+          <p class="hero-subtitle">Английский детский<br>сад и клуб</p>
+          <img src="images/hero-content.png" alt
+            class="hero-content-img-mobile">
+          <div class="hero-arrows">
+            <button class="arrow-btn arrow-btn--outline">&#8249;</button>
+            <button class="arrow-btn arrow-btn--filled">&#8250;</button>
+          </div>
+        </div>
+        <div class="hero-form">
+          <h2 class="hero-form-title">Запишитесь на персональную экскурсию</h2>
+          <p class="hero-form-desc">Заполните форму и посмотрите детский сад
+            вживую в удобное для вас время</p>
+          <div class="input-wrap">
+            <input type="text" class="hero-input" placeholder="Ваше имя">
+            <span class="required-star">*</span>
+          </div>
+          <div class="input-wrap">
+            <input type="tel" class="hero-input"
+              placeholder="+ 7 ___ - ___ - __ - __">
+            <span class="required-star">*</span>
+          </div>
+          <input type="email" class="hero-input" placeholder="Ваш e-mail">
+          <div class="hero-checkbox" onclick="toggleCheckbox(this)">
+            <span
+              class="checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty"></span>
+            <span class="checkbox-label">Я принимаю условия пользовательского
+              соглашения</span>
+          </div>
+          <button class="hero-form-btn">ЗАПИСАТЬСЯ</button>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--yellow"><img
+                src="images/icon-clock.png" alt></div>
+            <span>Часы работы: с 7:00 до 19:00</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--pink"><img
+                src="images/icon-group.png" alt></div>
+            <span>Группы: до 15 человек</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--purple"><img
+                src="images/icon-area.png" alt></div>
+            <span>Площадка для прогулок: собственная оборудованная территория
+              для прогулок</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--purple"><img
+                src="images/icon-camera.png" alt></div>
+            <span>Видеонаблюдение: онлайн</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--yellow"><img
+                src="images/icon-english.png" alt></div>
+            <span>Англоязычная среда: билингвал / экспат</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--pink"><img
+                src="images/icon-age.png" alt></div>
+            <span>Возраст детей: с 1,5 до 7 лет</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--pink"><img
+                src="images/icon-medical.png" alt></div>
+            <span>Утренний фильтр медработником: ежедневно</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--purple"><img
+                src="images/icon-building.png" alt></div>
+            <span>Помещение: 800 кв.м</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon feature-icon--yellow"><img
+                src="images/icon-food.png" alt></div>
+            <span>Питание: 5-разовое, с учетом индивидуальных особенностей
+              ребенка</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="questions questions--purple">
+        <div class="questions-inner">
+          <div class="questions-left">
+            <h2 class="questions-title questions-title--white">Есть вопросы?
+              Получите бесплатную консультацию</h2>
+            <p class="questions-desc questions-desc--white">Оставьте телефон и
+              мы перезвоним и расскажем все подробности о филиале</p>
+            <input type="tel" class="questions-input"
+              placeholder="+ 7 ___ - ___ - __ - __">
+            <div class="questions-row">
+              <div class="questions-checkbox" onclick="toggleCheckbox(this)">
+                <span
+                  class="checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty"></span>
+                <span class="checkbox-label white">Я принимаю условия
+                  пользовательского соглашения</span>
+              </div>
+              <button
+                class="questions-btn questions-btn--yellow">ОТПРАВИТЬ</button>
+            </div>
+          </div>
+          <div class="questions-right">
+            <img src="images/shapes1.png" alt class="questions-shapes">
+            <img src="images/boy.png" alt class="questions-img">
+          </div>
+        </div>
+      </section>
+
+      <section class="services">
+        <div class="container">
+          <h2 class="section-title">Дополнительные услуги</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-yoga.png"
+                  alt></div>
+              <span>Йога</span>
+            </div>
+            <div class="service-card service-card--wide">
+              <div class="service-icon"><img src="images/svc-montessori.png"
+                  alt></div>
+              <span>Монтессори группа с уникальным древесинным
+                оборудованием</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-golf.png"
+                  alt></div>
+              <span>Гольф для малышей</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-bike.png"
+                  alt></div>
+              <span>Занятия с беговелами</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-lego.png"
+                  alt></div>
+              <span>Легостроение и конструирование</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-clay.png"
+                  alt></div>
+              <span>Тестопластика и глинопластика</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-speech.png"
+                  alt></div>
+              <span>Риторика и ораторское мастерство</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-climbing.png"
+                  alt></div>
+              <span>Занятия по скалолазанию</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-theater.png"
+                  alt></div>
+              <span>Театрализация на английском языке</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-cooking.png"
+                  alt></div>
+              <span>Кулинария и этикет сервисного стола</span>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><img src="images/svc-sand.png"
+                  alt></div>
+              <span>Песочная терапия. Работа на интерактивных столах и
+                досках</span>
+            </div>
+          </div>
+          <div class="services-more">
+            <a href="services.html" class="btn-more">Все дополнительные
+              услуги</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-section">
+        <div class="container">
+          <h2 class="section-title">Видеогалерея нашего сада</h2>
+          <p class="section-desc">Вы можете ознакомиться как проходят наши
+            будни</p>
+          <div class="video-grid">
+            <div class="video-thumb video-thumb--small">
+              <img src="images/video2.png" alt>
+            </div>
+            <div class="video-thumb video-thumb--large">
+              <img src="images/video1.png" alt>
+              <div class="play-btn">&#9654;</div>
+            </div>
+            <div class="video-thumb video-thumb--small">
+              <img src="images/video3.png" alt>
+            </div>
+          </div>
+          <div class="slider-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot dot--active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="advantages">
+        <div class="container">
+          <div class="advantages-inner">
+            <img src="images/haip.png" alt class="haip-bg">
+            <h2 class="section-title">Преимущества</h2>
+            <p class="section-desc">Наша авторская программа ведётся на русском
+              и английском языках и состоит из увлекательных мероприятий</p>
+            <div class="adv-grid">
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--yellow"><img
+                    src="images/adv-masterclass.png" alt></div>
+                <span>Мастер-классы</span>
+              </div>
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--pink"><img
+                    src="images/adv-quest.png" alt></div>
+                <span>Игры-квесты</span>
+              </div>
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--purple"><img
+                    src="images/adv-conference.png" alt></div>
+                <span>Конференции и проекты</span>
+              </div>
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--blue"><img
+                    src="images/adv-experiment.png" alt></div>
+                <span>Опыты и эксперименты</span>
+              </div>
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--yellow"><img
+                    src="images/adv-concert.png" alt></div>
+                <span>Концерты и спектакли</span>
+              </div>
+              <div class="adv-item">
+                <div class="adv-icon adv-icon--pink"><img
+                    src="images/adv-competition.png" alt></div>
+                <span>Соревнования</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="team">
+        <div class="container">
+          <h2 class="section-title">Наша команда</h2>
+          <div class="team-slider">
+            <button class="arrow-btn arrow-btn--filled"
+              onclick="teamSlide(-1)">&#8249;</button>
+            <div class="team-track-wrap">
+              <div class="team-track" id="teamTrack">
+                <div class="team-card">
+                  <div class="team-photo"><img src="images/team1.jpg" alt></div>
+                  <p class="team-name">ЖУРАВЛЕВ</p>
+                  <p class="team-fullname">Дмитрий Анатольевич</p>
+                  <p class="team-role">Педагог - психолог</p>
+                  <p class="team-exp">Стаж 11 лет</p>
+                </div>
+                <div class="team-card">
+                  <div class="team-photo"><img src="images/team2.jpg" alt></div>
+                  <p class="team-name">ПЕТРОВА</p>
+                  <p class="team-fullname">Анна Сергеевна</p>
+                  <p class="team-role">Воспитатель</p>
+                  <p class="team-exp">Стаж 8 лет</p>
+                </div>
+                <div class="team-card">
+                  <div class="team-photo"><img src="images/team3.jpg" alt></div>
+                  <p class="team-name">СМИРНОВА</p>
+                  <p class="team-fullname">Елена Владимировна</p>
+                  <p class="team-role">Логопед</p>
+                  <p class="team-exp">Стаж 14 лет</p>
+                </div>
+                <div class="team-card">
+                  <div class="team-photo"><img src="images/team4.jpg" alt></div>
+                  <p class="team-name">КОЗЛОВ</p>
+                  <p class="team-fullname">Игорь Николаевич</p>
+                  <p class="team-role">Тренер по физкультуре</p>
+                  <p class="team-exp">Стаж 6 лет</p>
+                </div>
+              </div>
+            </div>
+            <button class="arrow-btn arrow-btn--outline"
+              onclick="teamSlide(1)">&#8250;</button>
+          </div>
+          <div class="team-mobile-nav">
+            <button class="arrow-btn arrow-btn--purple"
+              onclick="teamSlide(-1)">&#8249;</button>
+            <button class="arrow-btn arrow-btn--outline"
+              onclick="teamSlide(1)">&#8250;</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="questions questions--yellow">
+        <div class="questions-inner">
+          <div class="questions-left">
+            <h2 class="questions-title">Остались вопросы? Получите бесплатную
+              консультацию</h2>
+            <p class="questions-desc">Оставьте телефон и мы перезвоним и
+              расскажем все подробности о филиале</p>
+            <input type="tel" class="questions-input questions-input--yellow"
+              placeholder="+ 7 ___ - ___ - __ - __">
+            <div class="questions-row">
+              <div class="questions-checkbox" onclick="toggleCheckbox(this)">
+                <span
+                  class="checkbox-dot checkbox-dot--toggle checkbox-dot--dark-empty"></span>
+                <span class="checkbox-label dark">Я принимаю условия
+                  пользовательского соглашения</span>
+              </div>
+              <button
+                class="questions-btn questions-btn--red">ОТПРАВИТЬ</button>
+            </div>
+          </div>
+          <div class="questions-right">
+            <img src="images/shapes2.png" alt class="questions-shapes">
+            <img src="images/boy2.png" alt class="questions-img">
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="container">
+          <h2 class="section-title">О нашем центре</h2>
+          <p class="about-main">Мы создали пространство, в котором каждый
+            ребёнок проявляет и раскрывает себя, развивает индивидуальные
+            особенности и таланты.</p>
+          <p class="about-highlight">Наша задача — сделать так, чтобы каждый
+            день в Kids story был счастливым.</p>
+          <p class="about-text">Английский детский клуб. Для детей с 2 до 7 лет.
+            Погружение в языковую среду, собственная кухня, охраняемая
+            огороженная территория, медицинский кабинет, соляная пещера.
+            Дополнительные услуги. Для детей с 2 до 18 лет. Развивающие студии,
+            творческие мастерские, спортивные секции. Kids story - «ежедневное
+            развитие детей на 360 градусов».</p>
+        </div>
+      </section>
+
+      <section class="reviews">
+        <div class="container">
+          <h2 class="section-title">Отзывы о саде</h2>
+          <div class="reviews-slider">
+            <button
+              class="arrow-btn arrow-btn--filled arrow-btn--purple">&#8249;</button>
+            <div class="reviews-grid">
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <img src="images/user.png" alt="user">
+                  </div>
+                  <div>
+                    <p class="review-name">Дмитрий</p>
+                    <p class="review-city">Москва</p>
+                  </div>
+                </div>
+                <p class="review-text">Водим двоих детей, очень довольны уровнем
+                  и качеством образования, если нужен просто детский сад, то вам
+                  не сюда. Дети знают английский (произношение, грамматика и
+                  пр.)</p>
+                <a href="#" class="review-link">Прочитать отзыв</a>
+              </div>
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <img src="images/user.png" alt="user">
+                  </div>
+                  <div>
+                    <p class="review-name">Дмитрий</p>
+                    <p class="review-city">Москва</p>
+                  </div>
+                </div>
+                <p class="review-text">Водим двоих детей, очень довольны уровнем
+                  и качеством образования, если нужен просто детский сад, то вам
+                  не сюда. Дети знают английский (произношение, грамматика и
+                  пр.)</p>
+                <a href="#" class="review-link">Прочитать отзыв</a>
+              </div>
+            </div>
+            <button
+              class="arrow-btn arrow-btn--outline arrow-btn--purple-outline">&#8250;</button>
+          </div>
+          <div class="slider-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot dot--active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section">
+        <div class="container">
+          <div class="map-placeholder">
+            <img src="images/map.png" alt="Карта">
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-logo">
+            <a href="index.html"><img src="images/logo.png"
+                alt="Kids Story"></a>
+          </div>
+          <div class="footer-social">
             <a href="#" class="social-link">
-              <img src="images/tg-icon.png" alt="Telegram" class="social-icon-img">
+              <img src="images/tg-icon.png" alt="Telegram"
+                class="social-icon-img">
             </a>
             <a href="#" class="social-link">
               <img src="images/vk-icon.png" alt="VK" class="social-icon-img">
             </a>
           </div>
-          <a href="#" class="btn-signup">Записаться на экскурсию</a>
-        </div>
-        <div class="callback">
-          <a href="#" class="callback-link">Заказать быстрый звонок</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="subheader">
-    <nav class="submenu">
-      <a href="#" class="submenu-link">О центре</a>
-      <a href="#" class="submenu-link">Документы</a>
-      <a href="#" class="submenu-link">Родителям</a>
-      <a href="#" class="submenu-link">Питание</a>
-      <a href="#" class="submenu-link">Новости</a>
-      <a href="#" class="submenu-link">3D тур</a>
-      <a href="#" class="submenu-link">Отзывы</a>
-    </nav>
-  </div>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-bg">
-        <img src="images/hero-bg.png" alt="" class="hero-bg-img">
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">Kidsstory</h1>
-        <p class="hero-subtitle">Английский детский<br>сад и клуб</p>
-        <div class="hero-arrows">
-          <button class="arrow-btn arrow-btn--outline">&#8249;</button>
-          <button class="arrow-btn arrow-btn--filled">&#8250;</button>
-        </div>
-      </div>
-      <div class="hero-form">
-        <h2 class="hero-form-title">Запишитесь на персональную экскурсию</h2>
-        <p class="hero-form-desc">Заполните форму и посмотрите детский сад вживую в удобное для вас время</p>
-        <div class="input-wrap">
-          <input type="text" class="hero-input" placeholder="Ваше имя">
-          <span class="required-star">*</span>
-        </div>
-        <div class="input-wrap">
-          <input type="tel" class="hero-input" placeholder="+ 7 ___ - ___ - __ - __">
-          <span class="required-star">*</span>
-        </div>
-        <input type="email" class="hero-input" placeholder="Ваш e-mail">
-        <div class="hero-checkbox" onclick="toggleCheckbox(this)">
-          <span class="checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty"></span>
-          <span class="checkbox-label">Я принимаю условия пользовательского соглашения</span>
-        </div>
-        <button class="hero-form-btn">ЗАПИСАТЬСЯ</button>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--yellow"><img src="images/icon-clock.png" alt=""></div>
-          <span>Часы работы: с 7:00 до 19:00</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--pink"><img src="images/icon-group.png" alt=""></div>
-          <span>Группы: до 15 человек</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--purple"><img src="images/icon-area.png" alt=""></div>
-          <span>Площадка для прогулок: собственная оборудованная территория для прогулок</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--purple"><img src="images/icon-camera.png" alt=""></div>
-          <span>Видеонаблюдение: онлайн</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--yellow"><img src="images/icon-english.png" alt=""></div>
-          <span>Англоязычная среда: билингвал / экспат</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--pink"><img src="images/icon-age.png" alt=""></div>
-          <span>Возраст детей: с 1,5 до 7 лет</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--pink"><img src="images/icon-medical.png" alt=""></div>
-          <span>Утренний фильтр медработником: ежедневно</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--purple"><img src="images/icon-building.png" alt=""></div>
-          <span>Помещение: 800 кв.м</span>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon feature-icon--yellow"><img src="images/icon-food.png" alt=""></div>
-          <span>Питание: 5-разовое, с учетом индивидуальных особенностей ребенка</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="questions questions--purple">
-      <div class="questions-inner">
-        <div class="questions-left">
-          <h2 class="questions-title questions-title--white">Есть вопросы? Получите бесплатную консультацию</h2>
-          <p class="questions-desc questions-desc--white">Оставьте телефон и мы перезвоним и расскажем все подробности о филиале</p>
-          <input type="tel" class="questions-input" placeholder="+ 7 ___ - ___ - __ - __">
-          <div class="questions-row">
-            <div class="questions-checkbox" onclick="toggleCheckbox(this)">
-              <span class="checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty"></span>
-              <span class="checkbox-label white">Я принимаю условия пользовательского соглашения</span>
-            </div>
-            <button class="questions-btn questions-btn--yellow">ОТПРАВИТЬ</button>
+          <div class="footer-phone-block">
+            <img src="images/phone-icon.png" alt class="phone-icon-img">
+            <span class="footer-phone">+7 495 123 34 25</span>
           </div>
+          <p class="footer-email">dir@kidsstory.life</p>
+          <p class="footer-addr">Москва, ул. Муравская д.38, к.1</p>
+          <p class="footer-addr">ЖК Мир Митино М. Пятницкое шоссе</p>
         </div>
-        <div class="questions-right">
-          <img src="images/shapes1.png" alt="" class="questions-shapes">
-          <img src="images/boy.png" alt="" class="questions-img">
-        </div>
-      </div>
-    </section>
-
-    <section class="services">
-      <div class="container">
-        <h2 class="section-title">Дополнительные услуги</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-yoga.png" alt=""></div>
-            <span>Йога</span>
+        <div class="footer-nav">
+          <div class="footer-nav-col">
+            <p class="footer-nav-title">О нас</p>
+            <a href="#">О центре</a>
+            <a href="#">Документы</a>
+            <a href="#">Родителям</a>
+            <a href="#">Питание</a>
+            <a href="#">Новости</a>
+            <a href="#">3D тур</a>
+            <a href="#">Отзывы</a>
           </div>
-          <div class="service-card service-card--wide">
-            <div class="service-icon"><img src="images/svc-montessori.png" alt=""></div>
-            <span>Монтессори группа с уникальным древесинным оборудованием</span>
+          <div class="footer-nav-col">
+            <p class="footer-nav-title">Расписание</p>
+            <a href="#">Расписание основное</a>
+            <a href="services.html">Дополнительные услуги</a>
           </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-golf.png" alt=""></div>
-            <span>Гольф для малышей</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-bike.png" alt=""></div>
-            <span>Занятия с беговелами</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-lego.png" alt=""></div>
-            <span>Легостроение и конструирование</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-clay.png" alt=""></div>
-            <span>Тестопластика и глинопластика</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-speech.png" alt=""></div>
-            <span>Риторика и ораторское мастерство</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-climbing.png" alt=""></div>
-            <span>Занятия по скалолазанию</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-theater.png" alt=""></div>
-            <span>Театрализация на английском языке</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-cooking.png" alt=""></div>
-            <span>Кулинария и этикет сервисного стола</span>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><img src="images/svc-sand.png" alt=""></div>
-            <span>Песочная терапия. Работа на интерактивных столах и досках</span>
+          <div class="footer-nav-col">
+            <p class="footer-nav-title">Программа</p>
+            <a href="#">Группа (2-3 года)</a>
+            <a href="#">Группа (3-5 лет)</a>
+            <a href="#">Группа (5-7 лет)</a>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="video-section">
-      <div class="container">
-        <h2 class="section-title">Видеогалерея нашего сада</h2>
-        <p class="section-desc">Вы можете ознакомиться как проходят наши будни</p>
-        <div class="video-grid">
-          <div class="video-thumb video-thumb--small">
-            <img src="images/video2.png" alt="">
-          </div>
-          <div class="video-thumb video-thumb--large">
-            <img src="images/video1.png" alt="">
-            <div class="play-btn">&#9654;</div>
-          </div>
-          <div class="video-thumb video-thumb--small">
-            <img src="images/video3.png" alt="">
-          </div>
-        </div>
-        <div class="slider-dots">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot dot--active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
+      <div class="footer-bottom">
+        <span>Copyrights: Kids Story 2021</span>
+        <span>Дизайн ZHURAVLEV</span>
       </div>
-    </section>
+    </footer>
 
-    <section class="advantages">
-      <div class="container">
-        <div class="advantages-inner">
-          <img src="images/haip.png" alt="" class="haip-bg">
-          <h2 class="section-title">Преимущества</h2>
-          <p class="section-desc">Наша авторская программа ведётся на русском и английском языках и состоит из увлекательных мероприятий</p>
-          <div class="adv-grid">
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--yellow"><img src="images/adv-masterclass.png" alt=""></div>
-              <span>Мастер-классы</span>
-            </div>
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--pink"><img src="images/adv-quest.png" alt=""></div>
-              <span>Игры-квесты</span>
-            </div>
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--purple"><img src="images/adv-conference.png" alt=""></div>
-              <span>Конференции и проекты</span>
-            </div>
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--blue"><img src="images/adv-experiment.png" alt=""></div>
-              <span>Опыты и эксперименты</span>
-            </div>
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--yellow"><img src="images/adv-concert.png" alt=""></div>
-              <span>Концерты и спектакли</span>
-            </div>
-            <div class="adv-item">
-              <div class="adv-icon adv-icon--pink"><img src="images/adv-competition.png" alt=""></div>
-              <span>Соревнования</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="team">
-      <div class="container">
-        <h2 class="section-title">Наша команда</h2>
-        <div class="team-slider">
-          <button class="arrow-btn arrow-btn--filled">&#8249;</button>
-          <div class="team-grid">
-            <div class="team-card">
-              <div class="team-photo"><img src="images/team1.jpg" alt=""></div>
-              <p class="team-name">ЖУРАВЛЕВ</p>
-              <p class="team-fullname">Дмитрий Анатольевич</p>
-              <p class="team-role">Педагог - психолог</p>
-              <p class="team-exp">Стаж 11 лет</p>
-            </div>
-            <div class="team-card">
-              <div class="team-photo"><img src="images/team2.jpg" alt=""></div>
-              <p class="team-name">ЖУРАВЛЕВ</p>
-              <p class="team-fullname">Дмитрий Анатольевич</p>
-              <p class="team-role">Педагог - психолог</p>
-              <p class="team-exp">Стаж 11 лет</p>
-            </div>
-            <div class="team-card">
-              <div class="team-photo"><img src="images/team3.jpg" alt=""></div>
-              <p class="team-name">ЖУРАВЛЕВ</p>
-              <p class="team-fullname">Дмитрий Анатольевич</p>
-              <p class="team-role">Педагог - психолог</p>
-              <p class="team-exp">Стаж 11 лет</p>
-            </div>
-            <div class="team-card">
-              <div class="team-photo"><img src="images/team4.jpg" alt=""></div>
-              <p class="team-name">ЖУРАВЛЕВ</p>
-              <p class="team-fullname">Дмитрий Анатольевич</p>
-              <p class="team-role">Педагог - психолог</p>
-              <p class="team-exp">Стаж 11 лет</p>
-            </div>
-          </div>
-          <button class="arrow-btn arrow-btn--outline">&#8250;</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="questions questions--yellow">
-      <div class="questions-inner">
-        <div class="questions-left">
-          <h2 class="questions-title">Остались вопросы? Получите бесплатную консультацию</h2>
-          <p class="questions-desc">Оставьте телефон и мы перезвоним и расскажем все подробности о филиале</p>
-          <input type="tel" class="questions-input questions-input--yellow" placeholder="+ 7 ___ - ___ - __ - __">
-          <div class="questions-row">
-            <div class="questions-checkbox" onclick="toggleCheckbox(this)">
-              <span class="checkbox-dot checkbox-dot--toggle checkbox-dot--dark-empty"></span>
-              <span class="checkbox-label dark">Я принимаю условия пользовательского соглашения</span>
-            </div>
-            <button class="questions-btn questions-btn--red">ОТПРАВИТЬ</button>
-          </div>
-        </div>
-        <div class="questions-right">
-          <img src="images/shapes2.png" alt="" class="questions-shapes">
-          <img src="images/boy2.png" alt="" class="questions-img">
-        </div>
-      </div>
-    </section>
-
-    <section class="about">
-      <div class="container">
-        <h2 class="section-title">О нашем центре</h2>
-        <p class="about-main">Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты.</p>
-        <p class="about-highlight">Наша задача — сделать так, чтобы каждый день в Kids story был счастливым.</p>
-        <p class="about-text">Английский детский клуб. Для детей с 2 до 7 лет. Погружение в языковую среду, собственная кухня, охраняемая огороженная территория, медицинский кабинет, соляная пещера. Дополнительные услуги. Для детей с 2 до 18 лет. Развивающие студии, творческие мастерские, спортивные секции. Kids story - «ежедневное развитие детей на 360 градусов».</p>
-      </div>
-    </section>
-
-    <section class="reviews">
-      <div class="container">
-        <h2 class="section-title">Отзывы о саде</h2>
-        <div class="reviews-slider">
-          <button class="arrow-btn arrow-btn--filled arrow-btn--purple">&#8249;</button>
-          <div class="reviews-grid">
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">
-                  <img src="images/user.png" alt="user">
-                </div>
-                <div>
-                  <p class="review-name">Дмитрий</p>
-                  <p class="review-city">Москва</p>
-                </div>
-              </div>
-              <p class="review-text">Водим двоих детей, очень довольны уровнем и качеством образования, если нужен просто детский сад, то вам не сюда. Дети знают английский (произношение, грамматика и пр.)</p>
-              <a href="#" class="review-link">Прочитать отзыв</a>
-            </div>
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">
-                  <img src="images/user.png" alt="user">
-                </div>
-                <div>
-                  <p class="review-name">Дмитрий</p>
-                  <p class="review-city">Москва</p>
-                </div>
-              </div>
-              <p class="review-text">Водим двоих детей, очень довольны уровнем и качеством образования, если нужен просто детский сад, то вам не сюда. Дети знают английский (произношение, грамматика и пр.)</p>
-              <a href="#" class="review-link">Прочитать отзыв</a>
-            </div>
-          </div>
-          <button class="arrow-btn arrow-btn--outline arrow-btn--purple-outline">&#8250;</button>
-        </div>
-        <div class="slider-dots">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot dot--active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="map-section">
-      <div class="container">
-        <div class="map-placeholder">
-          <img src="images/map.png" alt="Карта">
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <div class="footer-logo">
-          <img src="images/logo.png" alt="Kids Story">
-        </div>
-        <div class="footer-social">
-          <a href="#" class="social-link">
-            <img src="images/tg-icon.png" alt="Telegram" class="social-icon-img">
-          </a>
-          <a href="#" class="social-link">
-            <img src="images/vk-icon.png" alt="VK" class="social-icon-img">
-          </a>
-        </div>
-        <div class="footer-phone-block">
-          <img src="images/phone-icon.png" alt="" class="phone-icon-img">
-          <span class="footer-phone">+7 495 123 34 25</span>
-        </div>
-        <p class="footer-email">dir@kidsstory.life</p>
-        <p class="footer-addr">Москва, ул. Муравская д.38, к.1</p>
-        <p class="footer-addr">ЖК Мир Митино М. Пятницкое шоссе</p>
-      </div>
-      <div class="footer-nav">
-        <div class="footer-nav-col">
-          <p class="footer-nav-title">О нас</p>
-          <a href="#">О центре</a>
-          <a href="#">Документы</a>
-          <a href="#">Родителям</a>
-          <a href="#">Питание</a>
-          <a href="#">Новости</a>
-          <a href="#">3D тур</a>
-          <a href="#">Отзывы</a>
-        </div>
-        <div class="footer-nav-col">
-          <p class="footer-nav-title">Расписание</p>
-          <a href="#">Расписание основное</a>
-          <a href="#">Дополнительные услуги</a>
-        </div>
-        <div class="footer-nav-col">
-          <p class="footer-nav-title">Программа</p>
-          <a href="#">Группа (2-3 года)</a>
-          <a href="#">Группа (3-5 лет)</a>
-          <a href="#">Группа (5-7 лет)</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>Copyrights: Kids Story 2021</span>
-      <span>Дизайн ZHURAVLEV</span>
-    </div>
-  </footer>
-
-  <script>
+    <script>
     function toggleCheckbox(el) {
       var dot = el.querySelector('.checkbox-dot--toggle');
       dot.classList.toggle('checkbox-dot--checked');
     }
+    function toggleMenu() {
+      document.getElementById('mainMenu').classList.toggle('open');
+    }
+    var teamIndex = 0;
+    function teamSlide(dir) {
+      var track = document.getElementById('teamTrack');
+      var cards = track.querySelectorAll('.team-card');
+      var w = window.innerWidth;
+      var visible = w <= 425 ? 1 : w <= 768 ? 2 : w <= 1024 ? 2 : 4;
+      var max = cards.length - visible;
+      teamIndex = Math.max(0, Math.min(teamIndex + dir, max));
+      var cardW = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap);
+      track.style.transform = 'translateX(-' + (teamIndex * cardW) + 'px)';
+    }
+    document.querySelectorAll('.menu-item').forEach(function(item) {
+      var timeout;
+      item.addEventListener('mouseenter', function() {
+        clearTimeout(timeout);
+        item.classList.add('open');
+      });
+      item.addEventListener('mouseleave', function() {
+        timeout = setTimeout(function() {
+          item.classList.remove('open');
+        }, 100);
+      });
+    });
   </script>
 
-</body>
+  </body>
 </html>
