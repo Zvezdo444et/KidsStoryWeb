@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дополнительные услуги</title>
+    <title>О центре</title>
     <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/about.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap"
       rel="stylesheet">
@@ -20,7 +21,7 @@
           aria-label="Меню">&#9776;</button>
         <nav class="menu" id="mainMenu">
           <div class="menu-item has-dropdown">
-            <a href="index.html" class="menu-link">О нас<span
+            <a href="#" class="menu-link active-link">О нас<span
                 class="arrow-line"></span></a>
             <div class="dropdown">
               <a href="about.html" class="dropdown-link">О центре</a>
@@ -61,15 +62,15 @@
               <span class="phone">+7 495 123 34 25</span>
             </div>
             <div class="social-icons">
-              <a href="#" class="social-link"><img src="images/tg-icon.png"
-                  alt="Telegram" class="social-icon-img"></a>
               <a href="#" class="social-link"><img src="images/vk-icon.png"
                   alt="VK" class="social-icon-img"></a>
+              <a href="#" class="social-link"><img src="images/tg-icon.png"
+                  alt="Telegram" class="social-icon-img"></a>
             </div>
             <a href="#" class="btn-signup">Записаться на экскурсию</a>
           </div>
           <div class="callback">
-            <a href="#" class="callback-link">Заказать быстрый звонок</a>
+            <a href="#" class="callback-link">Заказать обратный звонок</a>
           </div>
         </div>
       </div>
@@ -89,178 +90,73 @@
 
     <main>
 
-      <section class="page-hero">
-        <div class="container">
-          <div class="breadcrumb">
-            <a href="index.html">Главная</a>
-            <span>›</span>
-            <span>Дополнительные услуги</span>
-          </div>
-          <h1 class="page-title">Дополнительные услуги</h1>
+      <section class="page-hero container">
+        <div class="breadcrumb">
+          <a href="index.html">Главная</a>
+          <span>›</span>
+          <a href="#">О нас</a>
+          <span>›</span>
+          <span class="breadcrumb-current">О центре</span>
+        </div>
+        <h1 class="page-title">О центре</h1>
+      </section>
+
+      <section class="director-section container">
+        <div class="director-photo-wrap">
+          <img src="images/team1.jpg" alt="Руководитель" class="director-photo">
+        </div>
+        <div class="director-info">
+          <p class="director-role">Руководитель<br>kids story</p>
+          <p class="director-name-last">ЖУРАВЛЕВ</p>
+          <p class="director-name-first">Дмитрий Анатольевич</p>
+          <p class="director-position">Педагог - психолог</p>
+          <p class="director-exp">Стаж 11 лет</p>
+          <div class="director-divider"></div>
+          <p class="director-desc">Мы создали пространство, в котором каждый
+            ребёнок проявляет и раскрывает себя, развивает индивидуальные
+            особенности и таланты.</p>
+          <p class="director-highlight">Наша задача — сделать так, чтобы каждый
+            день в Kids story был счастливым.</p>
+          <ul class="director-list">
+            <li>Английский детский клуб. Для детей с 2 до 7 лет. Погружение в
+              языковую среду, собственная кухня, охраняемая огороженная
+              территория, медицинский кабинет, соляная пещера.</li>
+            <li>Дополнительные услуги. Для детей с 2 до 18 лет. Развивающие
+              студии, творческие мастерские, спортивные секции.</li>
+            <li>Kids story - «ежедневное развитие детей на 360 градусов».</li>
+          </ul>
         </div>
       </section>
 
-      <section class="services-full">
-        <div class="container">
-          <h2 class="section-title">Все направления</h2>
-
-          <div class="svc-grid">
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/yoga-photo.png"
-                  alt="Йога"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-yoga1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Йога</h4>
-                  <p>Занятия йогой для детей развивают гибкость, концентрацию и
-                    умение расслабляться. От 3 лет.</p>
-                </div>
-              </div>
+      <section class="video-section container">
+        <h2 class="section-heading">Наш сад в видео</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <img src="images/vid1.png" alt="Видео 1">
+            <div class="play-btn">
+              <div class="play-diamond"></div>
+              <div class="play-arrow"></div>
             </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/montessori-photo.png"
-                  alt="Монтессори"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-montessori1.png"
-                    alt></div>
-                <div class="svc-info">
-                  <h4>Монтессори группа с уникальным древесинным
-                    оборудованием</h4>
-                  <p>Развитие самостоятельности и сенсорики по методике
-                    Монтессори.</p>
-                </div>
-              </div>
+          </div>
+          <div class="video-card">
+            <img src="images/vid2.png" alt="Видео 2">
+            <div class="play-btn">
+              <div class="play-diamond"></div>
+              <div class="play-arrow"></div>
             </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/golf-photo.png"
-                  alt="Гольф"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-golf1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Гольф для малышей</h4>
-                  <p>Мини-гольф для самых маленьких: развивает терпение,
-                    точность и уважение к правилам игры.</p>
-                </div>
-              </div>
+          </div>
+          <div class="video-card">
+            <img src="images/vid3.png" alt="Видео 3">
+            <div class="play-btn">
+              <div class="play-diamond"></div>
+              <div class="play-arrow"></div>
             </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/lego-photo.png"
-                  alt="Лего"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-lego1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Легостроение и конструирование</h4>
-                  <p>Занятия с конструктором развивают логику, пространственное
-                    мышление и инженерные навыки.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/clay-photo.png"
-                  alt="Лепка"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-clay1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Тестопластика и глинопластика</h4>
-                  <p>Лепка из теста и глины развивает мелкую моторику,
-                    творческое мышление и усидчивость.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/speech-photo.png"
-                  alt="Риторика"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-speech1.png"
-                    alt></div>
-                <div class="svc-info">
-                  <h4>Риторика и ораторское мастерство</h4>
-                  <p>Учим детей красиво говорить, аргументировать и выступать
-                    перед аудиторией.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/climbing-photo.png"
-                  alt="Скалолазание"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-climbing1.png"
-                    alt></div>
-                <div class="svc-info">
-                  <h4>Занятия по скалолазанию</h4>
-                  <p>Скалодром в помещении — отличный способ развить силу,
-                    ловкость и уверенность в себе.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/theater-photo.png"
-                  alt="Театр"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-theater1.png"
-                    alt></div>
-                <div class="svc-info">
-                  <h4>Театрализация на английском языке</h4>
-                  <p>Дети разыгрывают мини-спектакли на английском — это
-                    развивает язык, артистизм и смелость.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/cooking-photo.png"
-                  alt="Кулинария"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-cooking1.png"
-                    alt></div>
-                <div class="svc-info">
-                  <h4>Кулинария и этикет сервисного стола</h4>
-                  <p>Учим готовить простые блюда и правильно вести себя за
-                    столом. Вкусно и познавательно!</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/sand-photo.png"
-                  alt="Песочная терапия"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-sand1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Песочная терапия. Работа на интерактивных столах и
-                    досках</h4>
-                  <p>Развивает воображение, снимает тревожность.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-photo"><img src="images/bike-photo.png"
-                  alt="Беговелы"></div>
-              <div class="svc-bottom">
-                <div class="svc-icon"><img src="images/svc-bike1.png" alt></div>
-                <div class="svc-info">
-                  <h4>Занятия с беговелами</h4>
-                  <p>Тренировки на беговелах развивают координацию и готовят
-                    ребёнка к езде на велосипеде. От 2 лет.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      <section class="info-wave-wrap">
-        <div class="container">
+      <section class="about-features-wrap">
+        <div class="about-features container">
           <div class="info-grid">
             <div class="info-item">
               <div class="info-icon info-icon--yellow"><img
@@ -313,13 +209,13 @@
         </div>
       </section>
 
-      <section class="questions questions--purple">
+      <section class="questions about-questions">
         <div class="questions-inner">
           <div class="questions-left">
-            <h2 class="questions-title questions-title--white">Есть вопросы?
+            <h2 class="questions-title questions-title--white">Остались вопросы?
               Получите бесплатную консультацию</h2>
             <p class="questions-desc questions-desc--white">Оставьте телефон и
-              мы перезвоним и расскажем все подробности</p>
+              мы перезвоним и расскажем все подробности о филиале</p>
             <input type="tel" class="questions-input"
               placeholder="+ 7 ___ - ___ - __ - __">
             <div class="questions-row">
@@ -333,9 +229,9 @@
                 class="questions-btn questions-btn--yellow">ОТПРАВИТЬ</button>
             </div>
           </div>
-          <div class="questions-right">
-            <img src="images/shapes1.png" alt class="questions-shapes">
-            <img src="images/boy.png" alt class="questions-img">
+          <div class="questions-right about-cta-right">
+            <img src="images/shapes5.png" alt class="questions-shapes">
+            <img src="images/girl3.png" alt class="questions-img">
           </div>
         </div>
       </section>
@@ -356,10 +252,10 @@
                 alt="Kids Story"></a>
           </div>
           <div class="footer-social">
-            <a href="#" class="social-link"><img src="images/tg-icon.png"
-                alt="Telegram" class="social-icon-img"></a>
             <a href="#" class="social-link"><img src="images/vk-icon.png"
                 alt="VK" class="social-icon-img"></a>
+            <a href="#" class="social-link"><img src="images/tg-icon.png"
+                alt="Telegram" class="social-icon-img"></a>
           </div>
           <div class="footer-phone-block">
             <img src="images/phone-icon.png" alt class="phone-icon-img">
@@ -391,6 +287,11 @@
             <a href="#">Группа (3-5 лет)</a>
             <a href="#">Группа (5-7 лет)</a>
           </div>
+          <div class="footer-nav-col">
+            <p class="footer-nav-title">Фото и видео</p>
+            <a href="#">Команда</a>
+            <a href="#">Контакты</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -401,7 +302,8 @@
 
     <script>
     function toggleCheckbox(el) {
-      el.querySelector('.checkbox-dot--toggle').classList.toggle('checkbox-dot--checked');
+      var dot = el.querySelector('.checkbox-dot--toggle');
+      dot.classList.toggle('checkbox-dot--checked');
     }
     function toggleMenu() {
       document.getElementById('mainMenu').classList.toggle('open');
