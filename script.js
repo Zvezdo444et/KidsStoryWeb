@@ -37,13 +37,13 @@ function buildHeader() {
   const nav = el("nav", { className: "menu", id: "mainMenu" });
 
   const menuItems = [
-    { label: "О нас", sub: [{ text: "О центре", href: "about.html" }] },
+    { label: "О нас", sub: [{ text: "О центре", href: "about.html" }, { text: "Родителям", href: "parents.html" }] },
     { label: "Расписание", sub: [{ text: "Расписание основное", href: "#" }, { text: "Дополнительные услуги", href: "services.html" }] },
     { label: "Программа", sub: [{ text: "Группа (2-3 года)", href: "#" }, { text: "Группа (3-5 лет)", href: "#" }, { text: "Группа (5-7 лет)", href: "#" }] }
   ];
 
   menuItems.forEach(item => {
-    const div = el("div", { className: "menu-item" });
+    const div = el("div", { className: "menu-item has-dropdown" });
     const link = el("a", { href: "#", className: "menu-link" });
     link.innerHTML = item.label + '<span class="arrow-line"></span>';
     const dropdown = el("div", { className: "dropdown" });
@@ -96,7 +96,7 @@ function buildSubheader() {
   [
     ["О центре", "about.html"],
     ["Документы", "#"],
-    ["Родителям", "#"],
+    ["Родителям", "parents.html"],
     ["Питание", "#"],
     ["Новости", "#"],
     ["3D тур", "#"],
@@ -443,7 +443,7 @@ function buildFooter() {
 
   const nav = el("div", { className: "footer-nav" });
   const cols = [
-    ["О нас", [["О центре", "about.html"], ["Документы", "#"], ["Родителям", "#"], ["Питание", "#"], ["Новости", "#"], ["3D тур", "#"], ["Отзывы", "#"]]],
+    ["О нас", [["О центре", "about.html"], ["Документы", "#"], ["Родителям", "parents.html"], ["Питание", "#"], ["Новости", "#"], ["3D тур", "#"], ["Отзывы", "#"]]],
     ["Расписание", [["Расписание основное", "#"], ["Дополнительные услуги", "services.html"]]],
     ["Программа", [["Группа (2-3 года)", "#"], ["Группа (3-5 лет)", "#"], ["Группа (5-7 лет)", "#"]]]
   ];
@@ -521,4 +521,31 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   document.body.append(buildHeader(), buildSubheader(), main, buildFooter());
+
+  document.querySelectorAll(".menu-item").forEach(function(item) {
+    var timeout;
+    item.addEventListener("mouseenter", function() { clearTimeout(timeout); item.classList.add("open"); });
+    item.addEventListener("mouseleave", function() { timeout = setTimeout(function() { item.classList.remove("open"); }, 100); });
+  });
+
+  $(window).on("load", function() { $("#page-loader").fadeOut(500); });
+  setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
+
+  $("input[type='tel']").inputmask("+7 (999) 999-99-99");
+
+  function checkScroll() {
+    $("section, .feature-item, .svc-card, .team-card, .review-card").each(function() {
+      if (!$(this).hasClass("scroll-hidden") && !$(this).hasClass("scroll-visible")) {
+        $(this).addClass("scroll-hidden");
+      }
+      var top = $(this).offset().top;
+      var bottom = $(window).scrollTop() + $(window).height();
+      if (bottom > top + 60) {
+        $(this).removeClass("scroll-hidden").addClass("scroll-visible");
+      }
+    });
+  }
+
+  checkScroll();
+  $(window).on("scroll", checkScroll);
 });

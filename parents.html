@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Родителям</title>
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/parents.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="page-loader"><div class="loader-spinner"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+
+    <script>
+    const faqItems = [
+      { q: "Часто задаваемый вопрос про одно?", open: false },
+      { q: "Про другое?", open: false },
+      { q: "Если еще есть какие либо вопросы?", open: false },
+      { q: "Часто задаваемый вопрос про одно?", open: true },
+      { q: "Про другое?", open: false },
+      { q: "Часто задаваемый вопрос про одно?", open: false },
+      { q: "Про другое?", open: false }
+    ];
+
+    const faqText = "Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты.";
+
+    function el(tag, opts = {}) {
+      const e = document.createElement(tag);
+      if (opts.className) e.className = opts.className;
+      if (opts.id) e.id = opts.id;
+      if (opts.text) e.textContent = opts.text;
+      if (opts.html) e.innerHTML = opts.html;
+      if (opts.href) e.href = opts.href;
+      if (opts.src) e.src = opts.src;
+      if (opts.alt !== undefined) e.alt = opts.alt;
+      if (opts.type) e.type = opts.type;
+      if (opts.placeholder) e.placeholder = opts.placeholder;
+      if (opts.attrs) Object.entries(opts.attrs).forEach(([k, v]) => e.setAttribute(k, v));
+      if (opts.onclick) e.onclick = opts.onclick;
+      return e;
+    }
+
+    function buildHeader() {
+      const header = el("header", { className: "header" });
+      const headerTop = el("div", { className: "header-top" });
+
+      const logo = el("div", { className: "logo" });
+      const logoLink = el("a", { href: "index.html" });
+      logoLink.append(el("img", { src: "images/logo.png", alt: "Kids Story" }));
+      logo.append(logoLink);
+
+      const burger = el("button", { className: "burger", html: "&#9776;", attrs: { "aria-label": "Меню" } });
+      burger.onclick = function() { document.getElementById("mainMenu").classList.toggle("open"); };
+
+      const nav = el("nav", { className: "menu", id: "mainMenu" });
+
+      const menuData = [
+        { label: "О нас", sub: [{ text: "О центре", href: "about.html" }, { text: "Родителям", href: "parents.html" }] },
+        { label: "Расписание", sub: [{ text: "Расписание основное", href: "#" }, { text: "Дополнительные услуги", href: "services.html" }] },
+        { label: "Программа", sub: [{ text: "Группа (2-3 года)", href: "#" }, { text: "Группа (3-5 лет)", href: "#" }, { text: "Группа (5-7 лет)", href: "#" }] }
+      ];
+
+      menuData.forEach(item => {
+        const div = el("div", { className: "menu-item has-dropdown" });
+        const link = el("a", { href: "#", className: "menu-link active-link" });
+        link.innerHTML = item.label + '<span class="arrow-line"></span>';
+        const dropdown = el("div", { className: "dropdown" });
+        item.sub.forEach(s => dropdown.append(el("a", { href: s.href, className: "dropdown-link", text: s.text })));
+        div.append(link, dropdown);
+        nav.append(div);
+      });
+
+      ["Фото и видео", "Команда", "Контакты"].forEach(t => nav.append(el("a", { href: "#", className: "menu-link", text: t })));
+
+      const headerRight = el("div", { className: "header-right" });
+      const addresses = el("div", { className: "header-addresses" });
+      const addr1 = el("span", { className: "address", text: "Москва, ул. Муравская д.38, к.1" });
+      const addr2 = el("span", { className: "address" });
+      addr2.innerHTML = 'ЖК Мир Митино <span class="address-highlight address-highlight--blue">М. Пятницкое шоссе</span>';
+      addresses.append(addr1, addr2);
+
+      const contacts = el("div", { className: "header-contacts" });
+      const phoneBlock = el("div", { className: "phone-block" });
+      phoneBlock.append(
+        el("img", { src: "images/phone-icon.png", alt: "", className: "phone-icon-img" }),
+        el("span", { className: "phone", text: "+7 495 123 34 25" })
+      );
+
+      const socials = el("div", { className: "social-icons" });
+      [["images/vk-icon.png", "VK"], ["images/tg-icon.png", "Telegram"]].forEach(([src, alt]) => {
+        const a = el("a", { href: "#", className: "social-link" });
+        a.append(el("img", { src, alt, className: "social-icon-img" }));
+        socials.append(a);
+      });
+
+      contacts.append(phoneBlock, socials, el("a", { href: "#", className: "btn-signup", text: "Записаться на экскурсию" }));
+
+      const callback = el("div", { className: "callback" });
+      callback.append(el("a", { href: "#", className: "callback-link", text: "Заказать обратный звонок" }));
+
+      headerRight.append(addresses, contacts, callback);
+      headerTop.append(logo, burger, nav, headerRight);
+      header.append(headerTop);
+      return header;
+    }
+
+    function buildSubheader() {
+      const sub = el("div", { className: "subheader" });
+      const nav = el("nav", { className: "submenu" });
+      [
+        ["О центре", "about.html"],
+        ["Документы", "#"],
+        ["Родителям", "parents.html"],
+        ["Питание", "#"],
+        ["Новости", "#"],
+        ["3D тур", "#"],
+        ["Отзывы", "#"]
+      ].forEach(([text, href]) => nav.append(el("a", { href, className: "submenu-link", text })));
+      sub.append(nav);
+      return sub;
+    }
+
+    function buildFAQ() {
+      const section = el("section", { className: "faq-section container" });
+
+      const breadcrumb = el("div", { className: "breadcrumb" });
+      breadcrumb.innerHTML = '<a href="index.html">Главная</a><span>›</span><a href="#">О нас</a><span>›</span><span class="breadcrumb-current">Родителям</span>';
+      section.append(breadcrumb);
+
+      section.append(el("h1", { className: "page-title", text: "Родителям" }));
+
+      const list = el("div", { className: "faq-list" });
+
+      faqItems.forEach((item, i) => {
+        const row = el("div", { className: "faq-item" + (item.open ? " faq-item--open" : "") });
+
+        const head = el("div", { className: "faq-head" });
+        const sign = el("span", { className: "faq-sign", text: item.open ? "−" : "+" });
+        const title = el("span", { className: "faq-title", text: item.q.toUpperCase() });
+        head.append(sign, title);
+
+        const body = el("div", { className: "faq-body" });
+        body.append(el("p", { text: faqText }), el("p", { text: faqText }));
+        if (!item.open) body.style.display = "none";
+
+        head.onclick = function() {
+          const isOpen = row.classList.contains("faq-item--open");
+          row.classList.toggle("faq-item--open");
+          sign.textContent = isOpen ? "+" : "−";
+          title.style.color = isOpen ? "#8081BD" : "#EA5D4A";
+          $(body).slideToggle(250);
+        };
+
+        if (item.open) title.style.color = "#EA5D4A";
+
+        row.append(head, body);
+        list.append(row);
+      });
+
+      section.append(list);
+      return section;
+    }
+
+    function buildCTA() {
+      const section = el("section", { className: "questions about-questions" });
+      const inner = el("div", { className: "questions-inner" });
+
+      const left = el("div", { className: "questions-left" });
+      left.append(
+        el("h2", { className: "questions-title questions-title--white", text: "Остались вопросы? Получите бесплатную консультацию" }),
+        el("p", { className: "questions-desc questions-desc--white", text: "Оставьте телефон и мы перезвоним и расскажем все подробности о филиале" })
+      );
+
+      const inp = el("input", { type: "tel", className: "questions-input", placeholder: "+ 7 ___ - ___ - __ - __" });
+      left.append(inp);
+
+      const row = el("div", { className: "questions-row" });
+      const cb = el("div", { className: "questions-checkbox" });
+      cb.onclick = function() {
+        const dot = cb.querySelector(".checkbox-dot--toggle");
+        dot.classList.toggle("checkbox-dot--checked");
+      };
+      cb.append(
+        el("span", { className: "checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty" }),
+        el("span", { className: "checkbox-label", text: "Я принимаю условия пользовательского соглашения" })
+      );
+      row.append(cb, el("button", { className: "questions-btn questions-btn--yellow", text: "ОТПРАВИТЬ" }));
+      left.append(row);
+
+      const right = el("div", { className: "questions-right about-cta-right" });
+      right.append(
+        el("img", { src: "images/shapes5.png", alt: "", className: "questions-shapes" }),
+        el("img", { src: "images/girl3.png", alt: "", className: "questions-img" })
+      );
+
+      inner.append(left, right);
+      section.append(inner);
+      return section;
+    }
+
+    function buildMap() {
+      const section = el("section", { className: "map-section" });
+      const wrap = el("div", { className: "map-wrap" });
+      wrap.append(el("img", { src: "images/map.png", alt: "Карта", className: "map-img" }));
+      section.append(wrap);
+      return section;
+    }
+
+    function buildFooter() {
+      const footer = el("footer", { className: "footer" });
+      const inner = el("div", { className: "footer-inner" });
+
+      const left = el("div", { className: "footer-left" });
+      const fLogoLink = el("a", { href: "index.html" });
+      fLogoLink.append(el("img", { src: "images/logo.png", alt: "Kids Story" }));
+      const fLogo = el("div", { className: "footer-logo" });
+      fLogo.append(fLogoLink);
+
+      const fSocials = el("div", { className: "footer-social" });
+      [["images/vk-icon.png", "VK"], ["images/tg-icon.png", "Telegram"]].forEach(([src, alt]) => {
+        const a = el("a", { href: "#", className: "social-link" });
+        a.append(el("img", { src, alt, className: "social-icon-img" }));
+        fSocials.append(a);
+      });
+
+      const fPhone = el("div", { className: "footer-phone-block" });
+      fPhone.append(
+        el("img", { src: "images/phone-icon.png", alt: "", className: "phone-icon-img" }),
+        el("span", { className: "footer-phone", text: "+7 495 123 34 25" })
+      );
+
+      left.append(fLogo, fSocials, fPhone,
+        el("p", { className: "footer-email", text: "dir@kidsstory.life" }),
+        el("p", { className: "footer-addr", text: "Москва, ул. Муравская д.38, к.1" }),
+        el("p", { className: "footer-addr", text: "ЖК Мир Митино М. Пятницкое шоссе" })
+      );
+
+      const nav = el("div", { className: "footer-nav" });
+      const cols = [
+        ["О нас", [["О центре", "about.html"], ["Документы", "#"], ["Родителям", "parents.html"], ["Питание", "#"], ["Новости", "#"], ["3D тур", "#"], ["Отзывы", "#"]]],
+        ["Расписание", [["Расписание основное", "#"], ["Дополнительные услуги", "services.html"]]],
+        ["Программа", [["Группа (2-3 года)", "#"], ["Группа (3-5 лет)", "#"], ["Группа (5-7 лет)", "#"]]],
+        ["Фото и видео", [["Команда", "#"], ["Контакты", "#"]]]
+      ];
+      cols.forEach(([title, links]) => {
+        const col = el("div", { className: "footer-nav-col" });
+        col.append(el("p", { className: "footer-nav-title", text: title }));
+        links.forEach(([text, href]) => col.append(el("a", { href, text })));
+        nav.append(col);
+      });
+
+      inner.append(left, nav);
+      const bottom = el("div", { className: "footer-bottom" });
+      bottom.append(el("span", { text: "Copyrights: Kids Story 2021" }), el("span", { text: "Дизайн ZHURAVLEV" }));
+      footer.append(inner, bottom);
+      return footer;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const main = el("main");
+      main.append(buildFAQ(), buildCTA(), buildMap());
+      document.body.append(buildHeader(), buildSubheader(), main, buildFooter());
+
+      document.querySelectorAll(".menu-item").forEach(function(item) {
+        let timeout;
+        item.addEventListener("mouseenter", function() { clearTimeout(timeout); item.classList.add("open"); });
+        item.addEventListener("mouseleave", function() { timeout = setTimeout(function() { item.classList.remove("open"); }, 100); });
+      });
+
+      $("input[type='tel']").inputmask("+7 (999) 999-99-99");
+
+      $(window).on("load", function() { $("#page-loader").fadeOut(500); });
+      setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
+    });
+    </script>
+  </body>
+</html>
