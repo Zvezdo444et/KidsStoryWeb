@@ -15,7 +15,7 @@ function el(tag, opts = {}) {
 }
 
 function checkbox(dotClass, labelClass, labelText) {
-  const wrap = el("div", { className: "questions-checkbox", onclick: function() { toggleCheckbox(this); } });
+  const wrap = el("div", { className: "questions-checkbox", onclick: function () { toggleCheckbox(this); } });
   wrap.append(
     el("span", { className: "checkbox-dot checkbox-dot--toggle " + dotClass }),
     el("span", { className: "checkbox-label " + labelClass, text: labelText })
@@ -136,7 +136,7 @@ function buildHero() {
     return wrap;
   }
 
-  const cbHero = el("div", { className: "hero-checkbox", onclick: function() { toggleCheckbox(this); } });
+  const cbHero = el("div", { className: "hero-checkbox", onclick: function () { toggleCheckbox(this); } });
   cbHero.append(
     el("span", { className: "checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty" }),
     el("span", { className: "checkbox-label", text: "Я принимаю условия пользовательского соглашения" })
@@ -318,7 +318,7 @@ function buildTeam() {
   container.append(el("h2", { className: "section-title", text: "Наша команда" }));
 
   const slider = el("div", { className: "team-slider" });
-  slider.append(el("button", { className: "arrow-btn arrow-btn--filled", html: "&#8249;", onclick: function() { teamSlide(-1); } }));
+  slider.append(el("button", { className: "arrow-btn arrow-btn--filled", html: "&#8249;", onclick: function () { teamSlide(-1); } }));
 
   const trackWrap = el("div", { className: "team-track-wrap" });
   const track = el("div", { className: "team-track", id: "teamTrack" });
@@ -345,12 +345,12 @@ function buildTeam() {
   });
 
   trackWrap.append(track);
-  slider.append(trackWrap, el("button", { className: "arrow-btn arrow-btn--outline", html: "&#8250;", onclick: function() { teamSlide(1); } }));
+  slider.append(trackWrap, el("button", { className: "arrow-btn arrow-btn--outline", html: "&#8250;", onclick: function () { teamSlide(1); } }));
 
   const mobileNav = el("div", { className: "team-mobile-nav" });
   mobileNav.append(
-    el("button", { className: "arrow-btn arrow-btn--purple", html: "&#8249;", onclick: function() { teamSlide(-1); } }),
-    el("button", { className: "arrow-btn arrow-btn--outline", html: "&#8250;", onclick: function() { teamSlide(1); } })
+    el("button", { className: "arrow-btn arrow-btn--purple", html: "&#8249;", onclick: function () { teamSlide(-1); } }),
+    el("button", { className: "arrow-btn arrow-btn--outline", html: "&#8250;", onclick: function () { teamSlide(1); } })
   );
 
   container.append(slider, mobileNav);
@@ -475,6 +475,118 @@ function buildDots() {
   return dots;
 }
 
+function buildSliderAndGallery() {
+  const section = el("section", { className: "slider-gallery-section" });
+  const container = el("div", { className: "container" });
+
+  container.append(el("h2", { className: "section-title", text: "Фотогалерея" }));
+
+  const sliderWrap = el("div", { className: "img-slider-wrap" });
+  const slides = el("div", { className: "img-slides" });
+  const images = [
+    "images/video1.png",
+    "images/video2.png",
+    "images/video3.png",
+    "images/hero-bg.png"
+  ];
+  images.forEach((src, i) => {
+    const slide = el("div", { className: "img-slide" + (i === 0 ? " active" : "") });
+    slide.append(el("img", { src, alt: "" }));
+    slides.append(slide);
+  });
+
+  const prevBtn = el("button", { className: "img-slider-btn img-slider-prev", html: "&#8249;" });
+  const nextBtn = el("button", { className: "img-slider-btn img-slider-next", html: "&#8250;" });
+  sliderWrap.append(prevBtn, slides, nextBtn);
+
+  const gallery = el("div", { className: "gallery-thumbs" });
+  images.forEach((src, i) => {
+    const thumb = el("div", { className: "gallery-thumb" + (i === 0 ? " active" : "") });
+    thumb.append(el("img", { src, alt: "" }));
+    gallery.append(thumb);
+  });
+
+  container.append(sliderWrap, gallery);
+  section.append(container);
+  return section;
+}
+
+function buildAccordion() {
+  const section = el("section", { className: "accordion-section" });
+  const container = el("div", { className: "container" });
+  container.append(el("h2", { className: "section-title", text: "Частые вопросы" }));
+
+  const acc = el("div", { id: "faq-accordion" });
+
+  const items = [
+    ["С какого возраста принимают детей?", "Мы принимаем детей с 1,5 до 7 лет в детский сад, а дополнительные кружки доступны детям с 2 до 18 лет."],
+    ["Какой режим работы?", "Центр работает ежедневно с 7:00 до 19:00, без выходных в рабочие дни."],
+    ["Есть ли питание?", "Да, организовано 5-разовое питание с учётом индивидуальных особенностей каждого ребёнка."],
+    ["Как записаться?", "Вы можете записаться онлайн через форму на сайте, по телефону или лично посетив наш центр."]
+  ];
+
+  items.forEach(([q, a]) => {
+    acc.append(
+      el("h3", { text: q }),
+      el("div", { html: "<p>" + a + "</p>" })
+    );
+  });
+
+  container.append(acc);
+  section.append(container);
+  return section;
+}
+
+function buildDatepicker() {
+  const section = el("section", { className: "datepicker-section" });
+  const container = el("div", { className: "container" });
+  container.append(el("h2", { className: "section-title", text: "Выберите дату экскурсии" }));
+
+  const wrap = el("div", { className: "datepicker-wrap" });
+  const label = el("label", { className: "datepicker-label" });
+  label.textContent = "Удобная дата: ";
+  const input = el("input", { type: "text", className: "datepicker-input", id: "tour-date", placeholder: "Выберите дату" });
+  label.append(input);
+  wrap.append(label);
+  container.append(wrap);
+  section.append(container);
+  return section;
+}
+
+function buildContactForm() {
+  const section = el("section", { className: "contact-form-section" });
+  const container = el("div", { className: "container" });
+  container.append(el("h2", { className: "section-title", text: "Записаться на приём" }));
+
+  const form = el("div", { className: "contact-form", id: "contact-form" });
+
+  function formRow(labelText, inputId, type, placeholder) {
+    const row = el("div", { className: "form-row" });
+    const lbl = el("label", { className: "form-label", attrs: { for: inputId } });
+    lbl.textContent = labelText;
+    const inp = el("input", { type, id: inputId, className: "form-input", placeholder });
+    const err = el("span", { className: "form-error", id: inputId + "-err" });
+    row.append(lbl, inp, err);
+    return row;
+  }
+
+  form.append(
+    formRow("Ваше имя *", "cf-name", "text", "Введите имя"),
+    formRow("Телефон *", "cf-phone", "tel", "+7 (___) ___-__-__"),
+    formRow("Email *", "cf-email", "email", "example@mail.ru"),
+    formRow("Возраст ребёнка *", "cf-age", "number", "Лет")
+  );
+
+  const submitBtn = el("button", { className: "hero-form-btn", id: "cf-submit", text: "ОТПРАВИТЬ ЗАЯВКУ" });
+  submitBtn.style.marginTop = "12px";
+  const successMsg = el("div", { className: "form-success", id: "cf-success", text: "✓ Заявка отправлена! Мы свяжемся с вами в ближайшее время." });
+
+  form.append(submitBtn, successMsg);
+  container.append(form);
+  section.append(container);
+  return section;
+}
+
 function toggleCheckbox(el) {
   const dot = el.querySelector(".checkbox-dot--toggle");
   dot.classList.toggle("checkbox-dot--checked");
@@ -517,24 +629,57 @@ document.addEventListener("DOMContentLoaded", function () {
     buildQuestionsBlock("questions--yellow", "checkbox-dot--dark-empty", "dark", "questions-btn--red", "images/shapes2.png", "images/boy2.png"),
     buildAbout(),
     buildReviews(),
+    buildSliderAndGallery(),
+    buildAccordion(),
+    buildDatepicker(),
+    buildContactForm(),
     buildMap()
   );
 
   document.body.append(buildHeader(), buildSubheader(), main, buildFooter());
 
-  document.querySelectorAll(".menu-item").forEach(function(item) {
+  document.querySelectorAll(".menu-item").forEach(function (item) {
     var timeout;
-    item.addEventListener("mouseenter", function() { clearTimeout(timeout); item.classList.add("open"); });
-    item.addEventListener("mouseleave", function() { timeout = setTimeout(function() { item.classList.remove("open"); }, 100); });
+    item.addEventListener("mouseenter", function () { clearTimeout(timeout); item.classList.add("open"); });
+    item.addEventListener("mouseleave", function () { timeout = setTimeout(function () { item.classList.remove("open"); }, 100); });
   });
 
-  $(window).on("load", function() { $("#page-loader").fadeOut(500); });
-  setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
+  $(window).on("load", function () { $("#page-loader").fadeOut(500); });
+  setTimeout(function () { $("#page-loader").fadeOut(500); }, 3000);
 
   $("input[type='tel']").inputmask("+7 (999) 999-99-99");
 
+  /* Задание 1: Слайдер */
+  var slideIdx = 0;
+  function goSlide(n) {
+    var slides = $(".img-slide");
+    var thumbs = $(".gallery-thumb");
+    slides.removeClass("active");
+    thumbs.removeClass("active");
+    slideIdx = (n + slides.length) % slides.length;
+    slides.eq(slideIdx).addClass("active");
+    thumbs.eq(slideIdx).addClass("active");
+  }
+  $(".img-slider-prev").on("click", function () { goSlide(slideIdx - 1); });
+  $(".img-slider-next").on("click", function () { goSlide(slideIdx + 1); });
+  $(".gallery-thumb").on("click", function () { goSlide($(this).index()); });
+
+  /* Задание 2:Accordion */
+  $("#faq-accordion").accordion({ collapsible: true, active: false, heightStyle: "content" });
+
+  /* Задание 3: Datepicker */
+  $("#tour-date").datepicker({ dateFormat: "dd.mm.yy", minDate: 0, changeMonth: true });
+
+  /* Задание 4: Анимации */
+
+  // Анимация 1 — подсветка кнопок при наведении
+  $(".hero-form-btn, .questions-btn, .btn-signup").on("mouseenter", function () {
+    $(this).stop(true).animate({ opacity: 0.85 }, 150).animate({ opacity: 1 }, 150);
+  });
+
+  // Анимация 2 — плавное появление блоков при прокрутке
   function checkScroll() {
-    $("section, .feature-item, .svc-card, .team-card, .review-card").each(function() {
+    $("section, .feature-item, .svc-card, .team-card, .review-card").each(function () {
       if (!$(this).hasClass("scroll-hidden") && !$(this).hasClass("scroll-visible")) {
         $(this).addClass("scroll-hidden");
       }
@@ -545,7 +690,77 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   checkScroll();
   $(window).on("scroll", checkScroll);
+
+  // Анимация 3 — эффект тряска
+  function shakeEl($el) {
+    var left = parseInt($el.css("marginLeft")) || 0;
+    $el.animate({ marginLeft: left + 8 }, 60)
+      .animate({ marginLeft: left - 8 }, 60)
+      .animate({ marginLeft: left + 6 }, 50)
+      .animate({ marginLeft: left - 6 }, 50)
+      .animate({ marginLeft: left }, 50);
+  }
+
+  /* Задание 5: Анимированный баннер */
+  var $banner = $("#animated-banner");
+  $banner.hide().slideDown(600);
+  setInterval(function () {
+    $banner.fadeTo(300, 0.5).fadeTo(300, 1);
+  }, 4000);
+  $("#banner-close").on("click", function () {
+    $banner.slideUp(400);
+  });
+
+  /* Задание 6: Валидация формы */
+  $("#cf-submit").on("click", function () {
+    var valid = true;
+    $(".form-error").text("");
+    $(".form-input").css("border-color", "");
+
+    var name = $("#cf-name").val().trim();
+    var phone = $("#cf-phone").val().trim();
+    var email = $("#cf-email").val().trim();
+    var age = $("#cf-age").val().trim();
+
+    if (!name || name.length < 2) {
+      $("#cf-name-err").text("Введите имя (минимум 2 символа)");
+      $("#cf-name").css("border-color", "#EA5D4A");
+      shakeEl($("#cf-name"));
+      valid = false;
+    }
+
+    if (!phone || phone.replace(/\D/g, "").length < 11) {
+      $("#cf-phone-err").text("Введите корректный телефон");
+      $("#cf-phone").css("border-color", "#EA5D4A");
+      shakeEl($("#cf-phone"));
+      valid = false;
+    }
+
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRe.test(email)) {
+      $("#cf-email-err").text("Введите корректный email");
+      $("#cf-email").css("border-color", "#EA5D4A");
+      shakeEl($("#cf-email"));
+      valid = false;
+    }
+
+    if (!age || isNaN(age) || age < 1 || age > 18) {
+      $("#cf-age-err").text("Введите возраст от 1 до 18");
+      $("#cf-age").css("border-color", "#EA5D4A");
+      shakeEl($("#cf-age"));
+      valid = false;
+    }
+
+    if (valid) {
+      $("#cf-success").slideDown(400);
+      $("#cf-submit").prop("disabled", true).text("ОТПРАВЛЕНО");
+    }
+  });
+
+  $(".form-input").on("input", function () {
+    $(this).css("border-color", "");
+    $("#" + this.id + "-err").text("");
+  });
 });

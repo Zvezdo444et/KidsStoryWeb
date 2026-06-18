@@ -4,6 +4,42 @@
   box-sizing: border-box;
 }
 
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid #F3ACC8;
+  border-top-color: #8081BD;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 html {
   overflow-x: hidden;
 }
@@ -1970,5 +2006,306 @@ body {
 
   .services-grid {
     gap: 8px;
+  }
+}
+
+#animated-banner {
+  background: linear-gradient(90deg, #8081BD, #EA5D4A);
+  color: #fff;
+  text-align: center;
+  padding: 10px 48px;
+  font-weight: 700;
+  font-size: 14px;
+  position: relative;
+  z-index: 200;
+}
+
+#banner-close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.slider-gallery-section {
+  padding: 40px 58px;
+}
+
+.img-slider-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.img-slides {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 360px;
+}
+
+.img-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.img-slide.active {
+  display: block;
+}
+
+.img-slide img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.img-slider-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #8081BD;
+  background: #fff;
+  color: #8081BD;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.img-slider-btn:hover {
+  background: #8081BD;
+  color: #fff;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery-thumb {
+  width: 100px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  border: 2px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.gallery-thumb.active,
+.gallery-thumb:hover {
+  opacity: 1;
+  border-color: #8081BD;
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.accordion-section {
+  padding: 40px 58px;
+  background: #FFF6D1;
+}
+
+#faq-accordion {
+  max-width: 820px;
+}
+
+#faq-accordion .ui-accordion-header {
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #334155;
+  padding: 14px 20px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#faq-accordion .ui-accordion-header:hover,
+#faq-accordion .ui-accordion-header-active {
+  background: #8081BD;
+  color: #fff;
+}
+
+#faq-accordion .ui-accordion-content {
+  background: #fff;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  padding: 14px 20px;
+  font-size: 15px;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.datepicker-section {
+  padding: 40px 58px;
+}
+
+.datepicker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.datepicker-label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #334155;
+}
+
+.datepicker-input {
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid #8081BD;
+  padding: 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+  width: 180px;
+}
+
+.datepicker-input:focus {
+  border-color: #EA5D4A;
+}
+
+.ui-datepicker {
+  font-family: 'Montserrat', sans-serif !important;
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14) !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+  background: #8081BD !important;
+  border: none !important;
+  border-radius: 10px 10px 0 0 !important;
+  color: #fff !important;
+}
+
+.ui-datepicker td .ui-state-active {
+  background: #EA5D4A !important;
+  border-color: #EA5D4A !important;
+}
+
+.contact-form-section {
+  padding: 40px 58px;
+  background: #f8f6ff;
+}
+
+.contact-form {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #334155;
+}
+
+.form-input {
+  height: 42px;
+  border-radius: 50px;
+  border: 2px solid #d1d5db;
+  padding: 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: #8081BD;
+}
+
+.form-error {
+  font-size: 11px;
+  color: #EA5D4A;
+  font-weight: 600;
+  min-height: 16px;
+  padding-left: 12px;
+}
+
+.form-success {
+  display: none;
+  background: #8081BD;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.checkbox-dot--toggle {
+  border: 2px solid currentColor;
+  transition: background 0.2s;
+}
+
+.checkbox-dot--white-empty {
+  border-color: #fff;
+  background: transparent;
+}
+
+.checkbox-dot--dark-empty {
+  border-color: #334155;
+  background: transparent;
+}
+
+.checkbox-dot--checked {
+  background: #EA5D4A !important;
+  border-color: #EA5D4A !important;
+}
+
+@media (max-width: 769px) {
+
+  .slider-gallery-section,
+  .accordion-section,
+  .datepicker-section,
+  .contact-form-section {
+    padding: 24px 16px;
+  }
+
+  .img-slides,
+  .img-slide img {
+    height: 220px;
+  }
+
+  .gallery-thumb {
+    width: 70px;
+    height: 50px;
   }
 }
