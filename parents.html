@@ -3,279 +3,582 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Родителям</title>
-    <link rel="stylesheet" href="css/services.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/parents.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Родителям — Kids Story</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    <style>
+    * { font-family: 'Montserrat', sans-serif; box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    #page-loader { position: fixed; inset: 0; background: #fff; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+    .loader-spinner { width: 56px; height: 56px; border: 5px solid #F3ACC8; border-top-color: #8081BD; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .header { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .header-inner { display: flex; align-items: center; padding: 0 20px; min-height: 76px; gap: 0; }
+    .logo-wrap { flex-shrink: 0; margin-right: 20px; }
+    .logo-wrap img { height: 60px; display: block; }
+    .header-nav { flex: 1; display: flex; align-items: center; min-width: 0; }
+    .menu-item { position: relative; }
+    .menu-link { font-weight: 700; font-size: 13px; color: #334155; text-decoration: none; padding: 5px 8px; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+    .menu-link:hover { color: #EA5D4A; }
+    .arrow-line { display: inline-block; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-top: -3px; flex-shrink: 0; }
+    .dropdown-bs { display: none; position: absolute; top: 100%; left: 0; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 10px; z-index: 200; min-width: 190px; padding: 8px 0; }
+    .menu-item.open .dropdown-bs { display: block; }
+    .dropdown-link { display: block; padding: 8px 18px; font-size: 13px; font-weight: 600; color: #334155; text-decoration: none; white-space: nowrap; }
+    .dropdown-link:hover { color: #EA5D4A; background: #FFF6D1; }
+    .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; padding: 10px 0; }
+    .header-addresses { display: flex; gap: 14px; align-items: center; }
+    .address { font-size: 11px; color: #EA5D4A; font-weight: 600; white-space: nowrap; }
+    .address-highlight--blue { color: #8081BD; font-weight: 700; }
+    .header-contacts { display: flex; align-items: center; gap: 10px; }
+    .phone-block { display: flex; align-items: center; gap: 5px; }
+    .phone-icon-img { width: 18px; height: 18px; }
+    .phone { font-weight: 700; font-size: 15px; color: #334155; white-space: nowrap; }
+    .social-icons { display: flex; gap: 5px; align-items: center; }
+    .social-link { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .social-icon-img { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
+    .btn-signup { background: #8081BD; color: #fff; font-weight: 700; font-size: 12px; border-radius: 30px; padding: 8px 16px; text-decoration: none; white-space: nowrap; }
+    .btn-signup:hover { background: #6a6ba8; color: #fff; }
+    .callback-link { font-size: 11px; color: #EA5D4A; font-weight: 600; text-decoration: underline; white-space: nowrap; }
+    .burger { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: #334155; margin-left: auto; flex-shrink: 0; }
+    .mobile-menu { display: none; flex-direction: column; background: #fff; padding: 16px 24px; border-top: 1px solid #e2e8f0; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu .menu-link { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
+
+    .subheader { background: #8081BD; }
+    .submenu { display: flex; flex-wrap: wrap; justify-content: center; }
+    .submenu-link { color: #fff; font-weight: 600; font-size: 14px; padding: 10px 18px; text-decoration: none; white-space: nowrap; }
+    .submenu-link:hover, .submenu-link.active { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .breadcrumb-wrap { padding: 24px 0 0; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; flex-wrap: wrap; background: none; padding: 0; margin: 0; }
+    .breadcrumb a { color: #94a3b8; text-decoration: none; }
+    .breadcrumb a:hover { color: #8081BD; }
+    .breadcrumb-current { color: #8081BD; font-weight: 700; }
+    .page-title { font-weight: 700; font-size: 36px; color: #334155; margin: 8px 0 0; }
+
+    .slide-wrap { margin-top: 16px; border-radius: 20px; overflow: hidden; }
+    .slide-item { background: linear-gradient(135deg, #8081BD 0%, #F3ACC8 100%); height: 260px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .slide-item h3 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .slide-item p { font-size: 16px; color: rgba(255,255,255,0.9); font-weight: 500; margin: 0; }
+    .carousel-control-prev-icon, .carousel-control-next-icon { background-color: rgba(246,179,31,0.7); border-radius: 50%; padding: 20px; background-size: 50%; }
+
+    .faq-section { padding-top: 24px; padding-bottom: 60px; }
+    .faq-list { margin-top: 32px; }
+    .faq-item { border-top: 2px solid #F6B31F; }
+    .faq-item:last-child { border-bottom: 2px solid #F6B31F; }
+    .faq-head { display: flex; align-items: center; gap: 16px; padding: 18px 0; cursor: pointer; user-select: none; }
+    .faq-sign { font-size: 24px; font-weight: 400; color: #8081BD; width: 16px; flex-shrink: 0; line-height: 1; }
+    .faq-title { font-weight: 700; font-size: 20px; line-height: 24px; color: #8081BD; text-transform: uppercase; transition: color 0.2s; }
+    .faq-head:hover .faq-title { color: #EA5D4A; }
+    .faq-body { padding: 0 0 24px 32px; }
+    .faq-body p { font-weight: 500; font-size: 16px; line-height: 20px; color: #334155; margin-bottom: 12px; }
+
+    .about-questions { margin: 48px 0; border-radius: 20px; overflow: hidden; background: #F3ACC8; }
+    .questions-inner { display: flex; align-items: stretch; }
+    .questions-left { flex: 1; padding: 48px 40px; }
+    .questions-title--white { font-weight: 700; font-size: 28px; color: #fff; margin-bottom: 12px; }
+    .questions-desc--white { font-size: 15px; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+    .questions-input { width: 100%; border: 2px solid #fff; border-radius: 30px; padding: 12px 20px; font-size: 15px; background: transparent; color: #fff; outline: none; margin-bottom: 16px; font-family: inherit; }
+    .questions-input::placeholder { color: rgba(255,255,255,0.7); }
+    .questions-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .questions-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .checkbox-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #fff; flex-shrink: 0; display: inline-block; transition: background 0.2s; }
+    .checkbox-dot--checked { background: #fff; }
+    .checkbox-label { font-size: 13px; color: #fff; font-weight: 500; }
+    .questions-btn--yellow { background: #F6B31F; color: #fff; font-weight: 700; font-size: 14px; border: none; border-radius: 30px; padding: 12px 30px; cursor: pointer; white-space: nowrap; }
+    .questions-btn--yellow:hover { background: #e0a010; }
+    .questions-right { position: relative; min-width: 260px; display: flex; }
+    .questions-shapes { position: absolute; bottom: 0; right: 0; width: 180px; opacity: 0.5; }
+    .questions-img { width: 260px; object-fit: cover; object-position: top; }
+
+    .map-img { width: 100%; display: block; max-height: 420px; object-fit: cover; }
+
+    .footer { background: #fff; border-top: 1px solid #e2e8f0; padding-top: 40px; }
+    .footer-logo img { height: 48px; margin-bottom: 12px; }
+    .footer-social { display: flex; gap: 8px; margin-bottom: 12px; }
+    .footer-phone-block { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .footer-phone { font-weight: 700; font-size: 15px; color: #334155; }
+    .footer-email, .footer-addr { font-size: 13px; color: #64748b; margin-bottom: 4px; }
+    .footer-nav-title { font-weight: 700; font-size: 14px; color: #334155; margin-bottom: 10px; }
+    .footer-nav-col a { display: block; font-size: 13px; color: #64748b; text-decoration: none; margin-bottom: 6px; }
+    .footer-nav-col a:hover { color: #8081BD; }
+    .footer-bottom { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 14px 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #94a3b8; margin-top: 32px; }
+
+    .modal-header { background: #8081BD; }
+    .modal-title { color: #fff; font-weight: 700; }
+    .btn-close-white { filter: invert(1); }
+    .modal-body label { font-weight: 600; font-size: 14px; color: #334155; }
+    .modal-footer .btn-primary { background: #F6B31F; border-color: #F6B31F; font-weight: 700; border-radius: 30px; padding: 10px 28px; }
+    .modal-footer .btn-primary:hover { background: #e0a010; border-color: #e0a010; }
+
+    .toast-container { z-index: 1100; }
+    @media (max-width: 1025px) {
+      .logo-wrap img { height: 40px; }
+      .menu-link { font-size: 8px;}
+    }
+    @media (max-width: 768px) {
+      .header-inner { padding: 10px 16px; min-height: auto; }
+      .header-nav { display: none !important; }
+      .burger { display: block; }
+      .header-right { display: none !important; }
+      .logo-wrap { margin-right: 0; }
+      .faq-title { font-size: 14px; }
+      .faq-body { padding-left: 16px; }
+      .slide-item h3 { font-size: 20px; }
+      .slide-item { height: 200px; }
+      .questions-left { padding: 28px 20px; }
+      .questions-title--white { font-size: 20px; }
+      .about-questions { margin: 24px 12px; }
+      .page-title { font-size: 26px; }
+    }
+    @media (max-width: 480px) {
+      .faq-title { font-size: 13px; }
+      .page-title { font-size: 22px; }
+    }
+  </style>
   </head>
   <body>
+
     <div id="page-loader"><div class="loader-spinner"></div></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <a href="index.html"><img src="images/logo.png" alt="Kids Story"></a>
+        </div>
 
+        <nav class="header-nav d-none d-lg-flex" id="mainMenu">
+          <div class="menu-item">
+            <a href="#" class="menu-link">О нас <span
+                class="arrow-line"></span></a>
+            <div class="dropdown-bs">
+              <a href="about.html" class="dropdown-link">О центре</a>
+              <a href="parents.html" class="dropdown-link">Родителям</a>
+            </div>
+          </div>
+          <div class="menu-item">
+            <a href="#" class="menu-link">Расписание <span
+                class="arrow-line"></span></a>
+            <div class="dropdown-bs">
+              <a href="#" class="dropdown-link">Расписание основное</a>
+              <a href="services.html" class="dropdown-link">Дополнительные
+                услуги</a>
+            </div>
+          </div>
+          <div class="menu-item">
+            <a href="#" class="menu-link">Программа <span
+                class="arrow-line"></span></a>
+            <div class="dropdown-bs">
+              <a href="#" class="dropdown-link">Группа (2-3 года)</a>
+              <a href="#" class="dropdown-link">Группа (3-5 лет)</a>
+              <a href="#" class="dropdown-link">Группа (5-7 лет)</a>
+            </div>
+          </div>
+          <a href="#" class="menu-link">Фото и видео</a>
+          <a href="#" class="menu-link">Команда</a>
+          <a href="#" class="menu-link">Контакты</a>
+        </nav>
+
+        <div class="header-right d-none d-lg-flex">
+          <div class="header-addresses">
+            <span class="address">Москва, ул. Муравская д.38, к.1</span>
+            <span class="address">ЖК Мир Митино <span
+                class="address-highlight--blue">М. Пятницкое шоссе</span></span>
+          </div>
+          <div class="header-contacts">
+            <div class="phone-block">
+              <img src="images/phone-icon.png" alt class="phone-icon-img">
+              <span class="phone">+7 495 123 34 25</span>
+            </div>
+            <div class="social-icons">
+              <a href="#" class="social-link"><img src="images/vk-icon.png"
+                  alt="VK" class="social-icon-img"></a>
+              <a href="#" class="social-link"><img src="images/tg-icon.png"
+                  alt="Telegram" class="social-icon-img"></a>
+            </div>
+            <a href="#" class="btn-signup" data-bs-toggle="modal"
+              data-bs-target="#excursionModal">Записаться на экскурсию</a>
+          </div>
+          <div>
+            <a href="#" class="callback-link">Заказать обратный звонок</a>
+          </div>
+        </div>
+
+        <button class="burger d-lg-none" onclick="toggleMobileMenu()"
+          aria-label="Меню">&#9776;</button>
+      </div>
+
+      <div class="mobile-menu d-lg-none" id="mobileMenu">
+        <a href="about.html" class="menu-link">О центре</a>
+        <a href="parents.html" class="menu-link">Родителям</a>
+        <a href="#" class="menu-link">Расписание основное</a>
+        <a href="services.html" class="menu-link">Дополнительные услуги</a>
+        <a href="#" class="menu-link">Группа (2-3 года)</a>
+        <a href="#" class="menu-link">Группа (3-5 лет)</a>
+        <a href="#" class="menu-link">Группа (5-7 лет)</a>
+        <a href="#" class="menu-link">Фото и видео</a>
+        <a href="#" class="menu-link">Команда</a>
+        <a href="#" class="menu-link">Контакты</a>
+        <a href="#" class="btn-signup mt-2 d-inline-block"
+          data-bs-toggle="modal" data-bs-target="#excursionModal">Записаться на
+          экскурсию</a>
+      </div>
+    </header>
+
+    <div class="subheader">
+      <div class="container-fluid px-3 px-md-4">
+        <nav class="submenu">
+          <a href="about.html" class="submenu-link">О центре</a>
+          <a href="#" class="submenu-link d-none d-sm-inline">Документы</a>
+          <a href="parents.html" class="submenu-link active">Родителям</a>
+          <a href="#" class="submenu-link d-none d-md-inline">Питание</a>
+          <a href="#" class="submenu-link d-none d-md-inline">Новости</a>
+          <a href="#" class="submenu-link d-none d-lg-inline">3D тур</a>
+          <a href="#" class="submenu-link d-none d-lg-inline">Отзывы</a>
+        </nav>
+      </div>
+    </div>
+
+    <main>
+
+      <div class="container">
+        <div class="breadcrumb-wrap">
+          <div class="breadcrumb">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <a href="#">О нас</a>
+            <span>›</span>
+            <span class="breadcrumb-current">Родителям</span>
+          </div>
+          <h1 class="page-title">Родителям</h1>
+        </div>
+
+        <div class="slide-wrap my-4">
+          <div id="parentsCarousel" class="carousel slide"
+            data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#parentsCarousel"
+                data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#parentsCarousel"
+                data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#parentsCarousel"
+                data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="slide-item">
+                  <div>
+                    <h3>Всё для вашего ребёнка</h3>
+                    <p>Мы создаём пространство, где каждый ребёнок раскрывает
+                      свои таланты</p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="slide-item">
+                  <div>
+                    <h3>Безопасность и забота</h3>
+                    <p>Видеонаблюдение онлайн, охраняемая территория,
+                      медицинский кабинет</p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="slide-item">
+                  <div>
+                    <h3>Вопросы и ответы</h3>
+                    <p>Найдите ответы на самые популярные вопросы родителей
+                      ниже</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button"
+              data-bs-target="#parentsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button"
+              data-bs-target="#parentsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section class="faq-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="faq-list" id="faqList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="about-questions">
+          <div class="questions-inner">
+            <div class="questions-left">
+              <h2 class="questions-title--white">Остались вопросы? Получите
+                бесплатную консультацию</h2>
+              <p class="questions-desc--white">Оставьте телефон и мы перезвоним
+                и расскажем все подробности о филиале</p>
+              <input type="tel" class="questions-input" id="ctaPhone"
+                placeholder="+7 (___) ___-__-__">
+              <div class="questions-row">
+                <div class="questions-checkbox" onclick="toggleCbDot(this)">
+                  <span class="checkbox-dot checkbox-dot--toggle"></span>
+                  <span class="checkbox-label">Я принимаю условия
+                    пользовательского соглашения</span>
+                </div>
+                <button class="questions-btn--yellow"
+                  onclick="submitCta()">ОТПРАВИТЬ</button>
+              </div>
+            </div>
+            <div class="questions-right d-none d-lg-flex">
+              <img src="images/shapes5.png" alt class="questions-shapes">
+              <img src="images/girl3.png" alt class="questions-img">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section">
+        <div class="map-wrap">
+          <img src="images/map.png" alt="Карта" class="map-img">
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-12 col-md-4 col-lg-3">
+            <div class="footer-logo">
+              <a href="index.html"><img src="images/logo.png"
+                  alt="Kids Story"></a>
+            </div>
+            <div class="footer-social">
+              <a href="#" class="social-link"><img src="images/vk-icon.png"
+                  alt="VK" class="social-icon-img"></a>
+              <a href="#" class="social-link"><img src="images/tg-icon.png"
+                  alt="Telegram" class="social-icon-img"></a>
+            </div>
+            <div class="footer-phone-block">
+              <img src="images/phone-icon.png" alt class="phone-icon-img">
+              <span class="footer-phone">+7 495 123 34 25</span>
+            </div>
+            <p class="footer-email">dir@kidsstory.life</p>
+            <p class="footer-addr">Москва, ул. Муравская д.38, к.1</p>
+            <p class="footer-addr">ЖК Мир Митино М. Пятницкое шоссе</p>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <div class="footer-nav-col">
+              <p class="footer-nav-title">О нас</p>
+              <a href="about.html">О центре</a>
+              <a href="parents.html">Родителям</a>
+              <a href="#">Документы</a>
+              <a href="#">Питание</a>
+              <a href="#">Новости</a>
+              <a href="#">3D тур</a>
+              <a href="#">Отзывы</a>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <div class="footer-nav-col">
+              <p class="footer-nav-title">Расписание</p>
+              <a href="#">Расписание основное</a>
+              <a href="services.html">Дополнительные услуги</a>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <div class="footer-nav-col">
+              <p class="footer-nav-title">Программа</p>
+              <a href="#">Группа (2-3 года)</a>
+              <a href="#">Группа (3-5 лет)</a>
+              <a href="#">Группа (5-7 лет)</a>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3 col-md-2">
+            <div class="footer-nav-col">
+              <p class="footer-nav-title">Фото и видео</p>
+              <a href="#">Команда</a>
+              <a href="#">Контакты</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Copyrights: Kids Story 2021</span>
+        <span>Дизайн ZHURAVLEV</span>
+      </div>
+    </footer>
+
+    <div class="modal fade" id="excursionModal" tabindex="-1"
+      aria-labelledby="excursionModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius:20px;overflow:hidden;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="excursionModalLabel">Записаться на
+              экскурсию</h5>
+            <button type="button" class="btn-close btn-close-white"
+              data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label class="form-label">Ваше имя</label>
+              <input type="text" class="form-control" placeholder="Введите имя"
+                style="border-radius:30px;">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Телефон</label>
+              <input type="tel" id="modalPhone" class="form-control"
+                placeholder="+7 (___) ___-__-__" style="border-radius:30px;">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Возраст ребёнка</label>
+              <select class="form-select" style="border-radius:30px;">
+                <option>1,5 - 2 года</option>
+                <option>2 - 3 года</option>
+                <option>3 - 5 лет</option>
+                <option>5 - 7 лет</option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="agreeCheck">
+              <label class="form-check-label" for="agreeCheck"
+                style="font-size:13px;color:#64748b;">Я принимаю условия
+                пользовательского соглашения</label>
+            </div>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-primary"
+              onclick="submitModal()">ОТПРАВИТЬ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="successToast"
+        class="toast align-items-center text-bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body"
+            style="font-family:'Montserrat',sans-serif;font-weight:600;">
+            Заявка отправлена! Мы свяжемся с вами скоро.
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast" aria-label="Закрыть"></button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
     <script>
-    const faqItems = [
-      { q: "Часто задаваемый вопрос про одно?", open: false },
-      { q: "Про другое?", open: false },
-      { q: "Если еще есть какие либо вопросы?", open: false },
-      { q: "Часто задаваемый вопрос про одно?", open: true },
-      { q: "Про другое?", open: false },
-      { q: "Часто задаваемый вопрос про одно?", open: false },
-      { q: "Про другое?", open: false }
-    ];
+  const faqItems = [
+    { q: "Часто задаваемый вопрос про одно?", open: false },
+    { q: "Про другое?", open: false },
+    { q: "Если еще есть какие либо вопросы?", open: false },
+    { q: "Часто задаваемый вопрос про одно?", open: true },
+    { q: "Про другое?", open: false },
+    { q: "Часто задаваемый вопрос про одно?", open: false },
+    { q: "Про другое?", open: false }
+  ];
 
-    const faqText = "Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты.";
+  const faqText = "Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты. Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя, развивает индивидуальные особенности и таланты.";
 
-    function el(tag, opts = {}) {
-      const e = document.createElement(tag);
-      if (opts.className) e.className = opts.className;
-      if (opts.id) e.id = opts.id;
-      if (opts.text) e.textContent = opts.text;
-      if (opts.html) e.innerHTML = opts.html;
-      if (opts.href) e.href = opts.href;
-      if (opts.src) e.src = opts.src;
-      if (opts.alt !== undefined) e.alt = opts.alt;
-      if (opts.type) e.type = opts.type;
-      if (opts.placeholder) e.placeholder = opts.placeholder;
-      if (opts.attrs) Object.entries(opts.attrs).forEach(([k, v]) => e.setAttribute(k, v));
-      if (opts.onclick) e.onclick = opts.onclick;
-      return e;
-    }
+  function buildFAQ() {
+    const list = document.getElementById("faqList");
+    faqItems.forEach(function(item) {
+      const row = document.createElement("div");
+      row.className = "faq-item" + (item.open ? " faq-item--open" : "");
 
-    function buildHeader() {
-      const header = el("header", { className: "header" });
-      const headerTop = el("div", { className: "header-top" });
+      const head = document.createElement("div");
+      head.className = "faq-head";
 
-      const logo = el("div", { className: "logo" });
-      const logoLink = el("a", { href: "index.html" });
-      logoLink.append(el("img", { src: "images/logo.png", alt: "Kids Story" }));
-      logo.append(logoLink);
+      const sign = document.createElement("span");
+      sign.className = "faq-sign";
+      sign.textContent = item.open ? "−" : "+";
 
-      const burger = el("button", { className: "burger", html: "&#9776;", attrs: { "aria-label": "Меню" } });
-      burger.onclick = function() { document.getElementById("mainMenu").classList.toggle("open"); };
+      const title = document.createElement("span");
+      title.className = "faq-title";
+      title.textContent = item.q.toUpperCase();
+      if (item.open) title.style.color = "#EA5D4A";
 
-      const nav = el("nav", { className: "menu", id: "mainMenu" });
+      head.append(sign, title);
 
-      const menuData = [
-        { label: "О нас", sub: [{ text: "О центре", href: "about.html" }, { text: "Родителям", href: "parents.html" }] },
-        { label: "Расписание", sub: [{ text: "Расписание основное", href: "#" }, { text: "Дополнительные услуги", href: "services.html" }] },
-        { label: "Программа", sub: [{ text: "Группа (2-3 года)", href: "#" }, { text: "Группа (3-5 лет)", href: "#" }, { text: "Группа (5-7 лет)", href: "#" }] }
-      ];
+      const body = document.createElement("div");
+      body.className = "faq-body";
+      const p1 = document.createElement("p"); p1.textContent = faqText;
+      const p2 = document.createElement("p"); p2.textContent = faqText;
+      body.append(p1, p2);
+      if (!item.open) body.style.display = "none";
 
-      menuData.forEach(item => {
-        const div = el("div", { className: "menu-item has-dropdown" });
-        const link = el("a", { href: "#", className: "menu-link active-link" });
-        link.innerHTML = item.label + '<span class="arrow-line"></span>';
-        const dropdown = el("div", { className: "dropdown" });
-        item.sub.forEach(s => dropdown.append(el("a", { href: s.href, className: "dropdown-link", text: s.text })));
-        div.append(link, dropdown);
-        nav.append(div);
-      });
-
-      ["Фото и видео", "Команда", "Контакты"].forEach(t => nav.append(el("a", { href: "#", className: "menu-link", text: t })));
-
-      const headerRight = el("div", { className: "header-right" });
-      const addresses = el("div", { className: "header-addresses" });
-      const addr1 = el("span", { className: "address", text: "Москва, ул. Муравская д.38, к.1" });
-      const addr2 = el("span", { className: "address" });
-      addr2.innerHTML = 'ЖК Мир Митино <span class="address-highlight address-highlight--blue">М. Пятницкое шоссе</span>';
-      addresses.append(addr1, addr2);
-
-      const contacts = el("div", { className: "header-contacts" });
-      const phoneBlock = el("div", { className: "phone-block" });
-      phoneBlock.append(
-        el("img", { src: "images/phone-icon.png", alt: "", className: "phone-icon-img" }),
-        el("span", { className: "phone", text: "+7 495 123 34 25" })
-      );
-
-      const socials = el("div", { className: "social-icons" });
-      [["images/vk-icon.png", "VK"], ["images/tg-icon.png", "Telegram"]].forEach(([src, alt]) => {
-        const a = el("a", { href: "#", className: "social-link" });
-        a.append(el("img", { src, alt, className: "social-icon-img" }));
-        socials.append(a);
-      });
-
-      contacts.append(phoneBlock, socials, el("a", { href: "#", className: "btn-signup", text: "Записаться на экскурсию" }));
-
-      const callback = el("div", { className: "callback" });
-      callback.append(el("a", { href: "#", className: "callback-link", text: "Заказать обратный звонок" }));
-
-      headerRight.append(addresses, contacts, callback);
-      headerTop.append(logo, burger, nav, headerRight);
-      header.append(headerTop);
-      return header;
-    }
-
-    function buildSubheader() {
-      const sub = el("div", { className: "subheader" });
-      const nav = el("nav", { className: "submenu" });
-      [
-        ["О центре", "about.html"],
-        ["Документы", "#"],
-        ["Родителям", "parents.html"],
-        ["Питание", "#"],
-        ["Новости", "#"],
-        ["3D тур", "#"],
-        ["Отзывы", "#"]
-      ].forEach(([text, href]) => nav.append(el("a", { href, className: "submenu-link", text })));
-      sub.append(nav);
-      return sub;
-    }
-
-    function buildFAQ() {
-      const section = el("section", { className: "faq-section container" });
-
-      const breadcrumb = el("div", { className: "breadcrumb" });
-      breadcrumb.innerHTML = '<a href="index.html">Главная</a><span>›</span><a href="#">О нас</a><span>›</span><span class="breadcrumb-current">Родителям</span>';
-      section.append(breadcrumb);
-
-      section.append(el("h1", { className: "page-title", text: "Родителям" }));
-
-      const list = el("div", { className: "faq-list" });
-
-      faqItems.forEach((item, i) => {
-        const row = el("div", { className: "faq-item" + (item.open ? " faq-item--open" : "") });
-
-        const head = el("div", { className: "faq-head" });
-        const sign = el("span", { className: "faq-sign", text: item.open ? "−" : "+" });
-        const title = el("span", { className: "faq-title", text: item.q.toUpperCase() });
-        head.append(sign, title);
-
-        const body = el("div", { className: "faq-body" });
-        body.append(el("p", { text: faqText }), el("p", { text: faqText }));
-        if (!item.open) body.style.display = "none";
-
-        head.onclick = function() {
-          const isOpen = row.classList.contains("faq-item--open");
-          row.classList.toggle("faq-item--open");
-          sign.textContent = isOpen ? "+" : "−";
-          title.style.color = isOpen ? "#8081BD" : "#EA5D4A";
-          $(body).slideToggle(250);
-        };
-
-        if (item.open) title.style.color = "#EA5D4A";
-
-        row.append(head, body);
-        list.append(row);
-      });
-
-      section.append(list);
-      return section;
-    }
-
-    function buildCTA() {
-      const section = el("section", { className: "questions about-questions" });
-      const inner = el("div", { className: "questions-inner" });
-
-      const left = el("div", { className: "questions-left" });
-      left.append(
-        el("h2", { className: "questions-title questions-title--white", text: "Остались вопросы? Получите бесплатную консультацию" }),
-        el("p", { className: "questions-desc questions-desc--white", text: "Оставьте телефон и мы перезвоним и расскажем все подробности о филиале" })
-      );
-
-      const inp = el("input", { type: "tel", className: "questions-input", placeholder: "+ 7 ___ - ___ - __ - __" });
-      left.append(inp);
-
-      const row = el("div", { className: "questions-row" });
-      const cb = el("div", { className: "questions-checkbox" });
-      cb.onclick = function() {
-        const dot = cb.querySelector(".checkbox-dot--toggle");
-        dot.classList.toggle("checkbox-dot--checked");
+      head.onclick = function() {
+        const isOpen = row.classList.contains("faq-item--open");
+        row.classList.toggle("faq-item--open");
+        sign.textContent = isOpen ? "+" : "−";
+        title.style.color = isOpen ? "#8081BD" : "#EA5D4A";
+        $(body).slideToggle(250);
       };
-      cb.append(
-        el("span", { className: "checkbox-dot checkbox-dot--toggle checkbox-dot--white-empty" }),
-        el("span", { className: "checkbox-label", text: "Я принимаю условия пользовательского соглашения" })
-      );
-      row.append(cb, el("button", { className: "questions-btn questions-btn--yellow", text: "ОТПРАВИТЬ" }));
-      left.append(row);
 
-      const right = el("div", { className: "questions-right about-cta-right" });
-      right.append(
-        el("img", { src: "images/shapes5.png", alt: "", className: "questions-shapes" }),
-        el("img", { src: "images/girl3.png", alt: "", className: "questions-img" })
-      );
-
-      inner.append(left, right);
-      section.append(inner);
-      return section;
-    }
-
-    function buildMap() {
-      const section = el("section", { className: "map-section" });
-      const wrap = el("div", { className: "map-wrap" });
-      wrap.append(el("img", { src: "images/map.png", alt: "Карта", className: "map-img" }));
-      section.append(wrap);
-      return section;
-    }
-
-    function buildFooter() {
-      const footer = el("footer", { className: "footer" });
-      const inner = el("div", { className: "footer-inner" });
-
-      const left = el("div", { className: "footer-left" });
-      const fLogoLink = el("a", { href: "index.html" });
-      fLogoLink.append(el("img", { src: "images/logo.png", alt: "Kids Story" }));
-      const fLogo = el("div", { className: "footer-logo" });
-      fLogo.append(fLogoLink);
-
-      const fSocials = el("div", { className: "footer-social" });
-      [["images/vk-icon.png", "VK"], ["images/tg-icon.png", "Telegram"]].forEach(([src, alt]) => {
-        const a = el("a", { href: "#", className: "social-link" });
-        a.append(el("img", { src, alt, className: "social-icon-img" }));
-        fSocials.append(a);
-      });
-
-      const fPhone = el("div", { className: "footer-phone-block" });
-      fPhone.append(
-        el("img", { src: "images/phone-icon.png", alt: "", className: "phone-icon-img" }),
-        el("span", { className: "footer-phone", text: "+7 495 123 34 25" })
-      );
-
-      left.append(fLogo, fSocials, fPhone,
-        el("p", { className: "footer-email", text: "dir@kidsstory.life" }),
-        el("p", { className: "footer-addr", text: "Москва, ул. Муравская д.38, к.1" }),
-        el("p", { className: "footer-addr", text: "ЖК Мир Митино М. Пятницкое шоссе" })
-      );
-
-      const nav = el("div", { className: "footer-nav" });
-      const cols = [
-        ["О нас", [["О центре", "about.html"], ["Документы", "#"], ["Родителям", "parents.html"], ["Питание", "#"], ["Новости", "#"], ["3D тур", "#"], ["Отзывы", "#"]]],
-        ["Расписание", [["Расписание основное", "#"], ["Дополнительные услуги", "services.html"]]],
-        ["Программа", [["Группа (2-3 года)", "#"], ["Группа (3-5 лет)", "#"], ["Группа (5-7 лет)", "#"]]],
-        ["Фото и видео", [["Команда", "#"], ["Контакты", "#"]]]
-      ];
-      cols.forEach(([title, links]) => {
-        const col = el("div", { className: "footer-nav-col" });
-        col.append(el("p", { className: "footer-nav-title", text: title }));
-        links.forEach(([text, href]) => col.append(el("a", { href, text })));
-        nav.append(col);
-      });
-
-      inner.append(left, nav);
-      const bottom = el("div", { className: "footer-bottom" });
-      bottom.append(el("span", { text: "Copyrights: Kids Story 2021" }), el("span", { text: "Дизайн ZHURAVLEV" }));
-      footer.append(inner, bottom);
-      return footer;
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const main = el("main");
-      main.append(buildFAQ(), buildCTA(), buildMap());
-      document.body.append(buildHeader(), buildSubheader(), main, buildFooter());
-
-      document.querySelectorAll(".menu-item").forEach(function(item) {
-        let timeout;
-        item.addEventListener("mouseenter", function() { clearTimeout(timeout); item.classList.add("open"); });
-        item.addEventListener("mouseleave", function() { timeout = setTimeout(function() { item.classList.remove("open"); }, 100); });
-      });
-
-      $("input[type='tel']").inputmask("+7 (999) 999-99-99");
-
-      $(window).on("load", function() { $("#page-loader").fadeOut(500); });
-      setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
+      row.append(head, body);
+      list.append(row);
     });
-    </script>
+  }
+
+  function toggleMobileMenu() {
+    document.getElementById("mobileMenu").classList.toggle("open");
+  }
+
+  function toggleCbDot(el) {
+    el.querySelector(".checkbox-dot--toggle").classList.toggle("checkbox-dot--checked");
+  }
+
+  function showToast() {
+    const toastEl = document.getElementById("successToast");
+    const toast = new bootstrap.Toast(toastEl, { delay: 3500 });
+    toast.show();
+  }
+
+  function submitModal() {
+    const modal = bootstrap.Modal.getInstance(document.getElementById("excursionModal"));
+    if (modal) modal.hide();
+    setTimeout(showToast, 400);
+  }
+
+  function submitCta() {
+    showToast();
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    buildFAQ();
+
+    document.querySelectorAll(".menu-item").forEach(function(item) {
+      let t;
+      item.addEventListener("mouseenter", function() { clearTimeout(t); item.classList.add("open"); });
+      item.addEventListener("mouseleave", function() { t = setTimeout(function() { item.classList.remove("open"); }, 100); });
+    });
+
+    $("input[type='tel']").inputmask("+7 (999) 999-99-99");
+
+    $(window).on("load", function() { $("#page-loader").fadeOut(500); });
+    setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
+  });
+</script>
+
   </body>
 </html>
