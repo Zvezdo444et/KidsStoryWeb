@@ -141,6 +141,12 @@
     .accordion-button:not(.collapsed) { color: #8081BD; background: #FFF6D1; }
     .accordion-button:focus { box-shadow: none; }
 
+    .info-badge { background: #FFF6D1; color: #8081BD; border-radius: 12px; padding: 6px 14px; font-size: 13px; font-weight: 700; border: 2px solid #F6B31F; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #EA5D4A; }
+    .highlight-box { background: #f0f0fa; border-left: 4px solid #8081BD; border-radius: 8px; padding: 16px 20px; }
+    .tag-pill { display: inline-block; background: #F3ACC8; color: #fff; font-size: 11px; font-weight: 700; border-radius: 20px; padding: 3px 12px; margin: 2px; }
+    .icon-circle { width: 44px; height: 44px; border-radius: 50%; background: #8081BD; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; flex-shrink: 0; }
+
     @media (max-width: 1025px) {
       .director-photo-wrap { height: auto; aspect-ratio: 4/3; }
       .about-questions { margin: 0 24px 32px; }
@@ -254,7 +260,7 @@
     </header>
 
     <div class="subheader">
-      <div class="container-fluid px-3 px-md-4">
+      <div class="container px-3 px-md-4">
         <nav class="submenu">
           <a href="about.html" class="submenu-link">О центре</a>
           <a href="#" class="submenu-link d-none d-sm-inline">Документы</a>
@@ -279,6 +285,23 @@
             <span class="breadcrumb-current">О центре</span>
           </div>
           <h1 class="page-title">О центре</h1>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mt-3 justify-content-start">
+          <span class="tag-pill">Английский клуб</span>
+          <span class="tag-pill">2–7 лет</span>
+          <span class="tag-pill">Билингвал</span>
+          <span class="tag-pill">Собственная кухня</span>
+          <span class="tag-pill d-none d-md-inline-block">Медицинский кабинет</span>
+        </div>
+
+        <div class="highlight-box mt-3 d-none d-lg-block">
+          <div class="d-flex align-items-center gap-3">
+            <span class="icon-circle">★</span>
+            <p class="mb-0 lead text-start" style="color:#334155;">
+              Английский детский клуб Kids Story — место, где каждый ребёнок раскрывает таланты, погружается в языковую среду и растёт счастливым.
+            </p>
+          </div>
         </div>
 
         <div class="slide-wrap my-4">
@@ -334,14 +357,15 @@
       <section class="director-section">
         <div class="container">
           <div class="row align-items-start g-4">
-            <div class="col-12 col-md-5 col-lg-4">
+            <div class="col-12 col-md-5 col-lg-4 order-md-2">
               <div class="director-photo-wrap">
                 <img src="images/team1.jpg" alt="Руководитель"
                   class="director-photo">
               </div>
             </div>
-            <div class="col-12 col-md-7 col-lg-8">
+            <div class="col-12 col-md-7 col-lg-8 order-md-1">
               <div class="director-info">
+                <p class="section-label mb-1">Руководство</p>
                 <p class="director-role">Руководитель<br>kids story</p>
                 <p class="director-name-last">ЖУРАВЛЕВ</p>
                 <p class="director-name-first">Дмитрий Анатольевич</p>
@@ -364,6 +388,17 @@
                   <li>Kids story - «ежедневное развитие детей на 360
                     градусов».</li>
                 </ul>
+                <div class="d-flex gap-2 mt-3 flex-wrap justify-content-start">
+                  <a href="#" class="btn btn-lg"
+                    style="background:#8081BD;color:#fff;border-radius:30px;font-weight:700;"
+                    data-bs-toggle="modal" data-bs-target="#excursionModal">
+                    Записаться на экскурсию
+                  </a>
+                  <a href="#" class="btn btn-sm"
+                    style="background:#F3ACC8;color:#fff;border-radius:30px;font-weight:700;">
+                    Узнать подробнее
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -372,7 +407,8 @@
 
       <section class="video-section">
         <div class="container">
-          <h2 class="section-heading">Наш сад в видео</h2>
+          <p class="section-label text-center mb-1">Медиа</p>
+          <h2 class="section-heading text-center">Наш сад в видео</h2>
           <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4">
               <div class="video-card">
@@ -407,7 +443,8 @@
 
       <section class="faq-section d-none d-md-block">
         <div class="container">
-          <h2 class="section-heading">Часто задаваемые вопросы</h2>
+          <p class="section-label text-center mb-1">FAQ</p>
+          <h2 class="section-heading text-center">Часто задаваемые вопросы</h2>
           <div class="accordion" id="faqAccordion">
             <div class="accordion-item border-0 mb-2">
               <h2 class="accordion-header">
@@ -456,6 +493,11 @@
 
       <section class="about-features-wrap">
         <div class="container">
+          <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+            <span class="info-badge">Более 500 семей</span>
+            <span class="info-badge d-none d-md-inline-block">11 лет опыта</span>
+            <span class="info-badge">800 кв.м</span>
+          </div>
           <div class="row g-0">
             <div class="col-12 col-sm-6 col-lg-4">
               <div class="info-item">
@@ -533,15 +575,17 @@
               бесплатную консультацию</h2>
             <p class="questions-desc--white">Оставьте телефон и мы перезвоним и
               расскажем все подробности о филиале</p>
-            <input type="tel" class="questions-input"
-              placeholder="+ 7 ___ - ___ - __ - __">
+            <div class="mb-3">
+              <input type="tel" class="form-control questions-input"
+                placeholder="+ 7 ___ - ___ - __ - __">
+            </div>
             <div class="questions-row">
               <div class="questions-checkbox" onclick="toggleCheckbox(this)">
                 <span class="checkbox-dot checkbox-dot--toggle"></span>
                 <span class="checkbox-label">Я принимаю условия
                   пользовательского соглашения</span>
               </div>
-              <button class="questions-btn--yellow">ОТПРАВИТЬ</button>
+              <button class="btn questions-btn--yellow">ОТПРАВИТЬ</button>
             </div>
           </div>
           <div class="questions-right d-none d-lg-flex">
@@ -662,7 +706,10 @@
             </div>
           </div>
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-primary">ОТПРАВИТЬ</button>
+            <button type="button" class="btn btn-primary btn-lg">ОТПРАВИТЬ</button>
+            <button type="button" class="btn btn-sm"
+              style="background:#e2e8f0;color:#334155;border-radius:30px;font-weight:600;"
+              data-bs-dismiss="modal">Отмена</button>
           </div>
         </div>
       </div>
