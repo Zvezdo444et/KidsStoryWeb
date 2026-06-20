@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Родителям — Kids Story</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Montserrat:wght@500;600;700&display=swap"
       rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -13,6 +13,15 @@
     <style>
     * { font-family: 'Montserrat', sans-serif; box-sizing: border-box; }
     html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    @media (max-width: 575px) { body { font-size: 13px; } }
+    @media (min-width: 576px) and (max-width: 991px) { body { font-size: 14px; } }
+    @media (min-width: 992px) { body { font-size: 16px; } }
+
+    .custom-font { font-family: 'Nunito', sans-serif; }
+    @media (max-width: 575px) { .custom-font { font-size: 13px; } }
+    @media (min-width: 576px) and (max-width: 991px) { .custom-font { font-size: 14px; } }
+    @media (min-width: 992px) { .custom-font { font-size: 16px; } }
 
     #page-loader { position: fixed; inset: 0; background: #fff; z-index: 9999; display: flex; align-items: center; justify-content: center; }
     .loader-spinner { width: 56px; height: 56px; border: 5px solid #F3ACC8; border-top-color: #8081BD; border-radius: 50%; animation: spin 0.8s linear infinite; }
@@ -67,6 +76,7 @@
     .slide-item h3 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 10px; }
     .slide-item p { font-size: 16px; color: rgba(255,255,255,0.9); font-weight: 500; margin: 0; }
     .carousel-control-prev-icon, .carousel-control-next-icon { background-color: rgba(246,179,31,0.7); border-radius: 50%; padding: 20px; background-size: 50%; }
+    .carousel-caption { position: static; text-align: center; padding: 0; }
 
     .faq-section { padding-top: 24px; padding-bottom: 60px; }
     .faq-list { margin-top: 32px; }
@@ -81,7 +91,7 @@
 
     .about-questions { margin: 48px 0; border-radius: 20px; overflow: hidden; background: #F3ACC8; }
     .questions-inner { display: flex; align-items: stretch; }
-    .questions-left { flex: 1; padding: 48px 40px; }
+    .questions-left { flex: 1; padding: 48px 40px; min-width: 0; }
     .questions-title--white { font-weight: 700; font-size: 28px; color: #fff; margin-bottom: 12px; }
     .questions-desc--white { font-size: 15px; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
     .questions-input { width: 100%; border: 2px solid #fff; border-radius: 30px; padding: 12px 20px; font-size: 15px; background: transparent; color: #fff; outline: none; margin-bottom: 16px; font-family: inherit; }
@@ -124,9 +134,12 @@
     .icon-circle { width: 44px; height: 44px; border-radius: 50%; background: #8081BD; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; flex-shrink: 0; }
 
     .toast-container { z-index: 1100; }
+
+    .bs-components-section { background: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 28px 0; }
+
     @media (max-width: 1025px) {
       .logo-wrap img { height: 40px; }
-      .menu-link { font-size: 8px;}
+      .menu-link { font-size: 8px; }
     }
     @media (max-width: 768px) {
       .header-inner { padding: 10px 16px; min-height: auto; }
@@ -137,17 +150,22 @@
       .faq-title { font-size: 14px; }
       .faq-body { padding-left: 16px; }
       .slide-item h3 { font-size: 20px; }
-      .slide-item { height: 200px; }
-      .questions-left { padding: 28px 20px; }
-      .questions-title--white { font-size: 20px; }
-      .about-questions { margin: 24px 12px; }
-      .page-title { font-size: 26px; }
+      .slide-item { height: auto; min-height: 200px; padding: 24px 16px; }
+      .questions-left { padding: 24px 16px; }
+      .questions-title--white { font-size: 18px; }
+      .questions-desc--white { font-size: 13px; }
+      .about-questions { margin: 24px 0; }
+      .page-title { font-size: 24px; }
     }
     @media (max-width: 480px) {
       .faq-title { font-size: 13px; }
-      .page-title { font-size: 22px; }
+      .page-title { font-size: 20px; }
+      .submenu-link { font-size: 12px; padding: 8px 10px; }
+      .questions-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .slide-item p { font-size: 13px; }
+      .bs-components-section .btn-group { flex-wrap: wrap; }
     }
-  </style>
+    </style>
   </head>
   <body>
 
@@ -251,9 +269,119 @@
       </div>
     </div>
 
+    <section class="bs-components-section">
+      <div class="container px-3">
+
+        <div class="mb-3 d-flex flex-wrap gap-2 align-items-center">
+          <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle" type="button"
+              data-bs-toggle="dropdown"
+              style="background:#8081BD;color:#fff;border-radius:20px;font-weight:700;">
+              Выпадающее меню
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">О центре</a></li>
+              <li><a class="dropdown-item" href="#">Родителям</a></li>
+              <li><a class="dropdown-item" href="#">Расписание</a></li>
+            </ul>
+          </div>
+
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-sm"
+              style="background:#F3ACC8;color:#fff;font-weight:700;">2–3
+              года</button>
+            <button type="button" class="btn btn-sm"
+              style="background:#8081BD;color:#fff;font-weight:700;">3–5
+              лет</button>
+            <button type="button" class="btn btn-sm"
+              style="background:#F6B31F;color:#fff;font-weight:700;">5–7
+              лет</button>
+          </div>
+        </div>
+
+        <ul class="nav nav-tabs mb-3 flex-nowrap overflow-auto"
+          style="border-bottom:2px solid #F6B31F;">
+          <li class="nav-item">
+            <a class="nav-link active" href="#"
+              style="color:#8081BD;font-weight:700;white-space:nowrap;">Питание</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              style="color:#334155;white-space:nowrap;">Безопасность</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              style="color:#334155;white-space:nowrap;">Развитие</a>
+          </li>
+        </ul>
+
+        <nav class="navbar navbar-expand-sm rounded mb-3 px-3 py-2"
+          style="background:#f0f0fa;">
+          <span class="navbar-brand fw-700"
+            style="color:#8081BD;font-weight:700;font-size:14px;">Kids
+            Story</span>
+          <div class="d-flex gap-2 ms-auto flex-wrap">
+            <a href="#" class="nav-link"
+              style="color:#334155;font-size:13px;">Контакты</a>
+            <a href="#" class="nav-link"
+              style="color:#334155;font-size:13px;">Новости</a>
+          </div>
+        </nav>
+
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb mb-0" style="background:none;padding:0;">
+            <li class="breadcrumb-item"><a href="index.html"
+                style="color:#8081BD;">Главная</a></li>
+            <li class="breadcrumb-item"><a href="#" style="color:#8081BD;">О
+                нас</a></li>
+            <li class="breadcrumb-item active"
+              style="color:#EA5D4A;font-weight:700;">Родителям</li>
+          </ol>
+        </nav>
+
+        <nav aria-label="Пагинация" class="mb-3">
+          <ul class="pagination pagination-sm mb-0 flex-wrap">
+            <li class="page-item disabled"><a class="page-link"
+                href="#">«</a></li>
+            <li class="page-item active"><a class="page-link" href="#"
+                style="background:#8081BD;border-color:#8081BD;">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+          </ul>
+        </nav>
+
+        <div class="mb-3">
+          <img src="images/logo.png" alt="Kids Story"
+            class="img-fluid img-thumbnail" style="max-height:60px;">
+        </div>
+
+        <div class="mb-1 d-flex align-items-center gap-2 flex-wrap">
+          <span class="custom-font"
+            style="font-size:13px;color:#64748b;font-weight:600;">Заполненность
+            групп:</span>
+          <span class="custom-font"
+            style="font-size:12px;color:#8081BD;font-weight:700;">78%</span>
+        </div>
+        <div class="progress mb-1"
+          style="height:12px;border-radius:10px;max-width:400px;">
+          <div class="progress-bar" role="progressbar"
+            style="width:78%;background:#8081BD;border-radius:10px;"
+            aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="progress"
+          style="height:12px;border-radius:10px;max-width:400px;">
+          <div class="progress-bar" role="progressbar"
+            style="width:45%;background:#F3ACC8;border-radius:10px;"
+            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+      </div>
+    </section>
+
     <main>
 
-      <div class="container">
+      <div class="container px-3">
         <div class="breadcrumb-wrap">
           <div class="breadcrumb">
             <a href="index.html">Главная</a>
@@ -301,6 +429,10 @@
                     <h3>Всё для вашего ребёнка</h3>
                     <p>Мы создаём пространство, где каждый ребёнок раскрывает
                       свои таланты</p>
+                    <div class="carousel-caption d-none d-md-block mt-2">
+                      <small style="color:rgba(255,255,255,0.8);">Дети от 1,5 до
+                        7 лет · Москва</small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -310,6 +442,10 @@
                     <h3>Безопасность и забота</h3>
                     <p>Видеонаблюдение онлайн, охраняемая территория,
                       медицинский кабинет</p>
+                    <div class="carousel-caption d-none d-md-block mt-2">
+                      <small style="color:rgba(255,255,255,0.8);">Ваш ребёнок
+                        под надёжной защитой</small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -319,6 +455,10 @@
                     <h3>Вопросы и ответы</h3>
                     <p>Найдите ответы на самые популярные вопросы родителей
                       ниже</p>
+                    <div class="carousel-caption d-none d-md-block mt-2">
+                      <small style="color:rgba(255,255,255,0.8);">Мы всегда
+                        рядом и готовы помочь</small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -355,7 +495,7 @@
       </div>
 
       <section class="faq-section">
-        <div class="container">
+        <div class="container px-3">
           <div class="row">
             <div class="col-12">
               <p class="section-label text-center mb-2">Частые вопросы</p>
@@ -378,7 +518,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section class="container px-3">
         <div class="about-questions">
           <div class="questions-inner">
             <div class="questions-left">
@@ -388,8 +528,7 @@
                 и расскажем все подробности о филиале</p>
               <div class="mb-3">
                 <input type="tel" class="form-control questions-input"
-                  id="ctaPhone"
-                  placeholder="+7 (___) ___-__-__">
+                  id="ctaPhone" placeholder="+7 (___) ___-__-__">
               </div>
               <div class="questions-row">
                 <div class="questions-checkbox" onclick="toggleCbDot(this)">
@@ -418,7 +557,7 @@
     </main>
 
     <footer class="footer">
-      <div class="container">
+      <div class="container px-3">
         <div class="row g-4">
           <div class="col-12 col-md-4 col-lg-3">
             <div class="footer-logo">
@@ -641,7 +780,7 @@
     $(window).on("load", function() { $("#page-loader").fadeOut(500); });
     setTimeout(function() { $("#page-loader").fadeOut(500); }, 3000);
   });
-</script>
+    </script>
 
   </body>
 </html>
